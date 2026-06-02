@@ -1,0 +1,11 @@
+# Development-only files (exclude from WordPress.org release ZIP).
+/.wordpress-org/
+/languages/*.pot
+/languages/*.po
+/.distignore
+/.git
+/.gitignore
+/node_modules
+/vendor
+*.md
+!readme.txt

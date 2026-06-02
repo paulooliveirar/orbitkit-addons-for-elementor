@@ -1,0 +1,64 @@
+.rocketkit-pricing-table {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1.5rem;
+}
+
+.rocketkit-pricing-card {
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	padding: 1.5rem;
+	text-align: center;
+	background: #fff;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.rocketkit-pricing-card.is-featured {
+	border-color: #03a84e;
+	box-shadow: 0 12px 32px rgba(3, 168, 78, 0.15);
+	transform: translateY(-4px);
+}
+
+.rocketkit-pricing-name {
+	margin: 0 0 0.75rem;
+	font-size: 1.25rem;
+}
+
+.rocketkit-pricing-amount {
+	font-size: 2rem;
+	font-weight: 700;
+	color: #111827;
+}
+
+.rocketkit-pricing-period {
+	display: block;
+	font-size: 0.875rem;
+	color: #6b7280;
+}
+
+.rocketkit-pricing-features {
+	list-style: none;
+	margin: 1rem 0;
+	padding: 0;
+	text-align: left;
+}
+
+.rocketkit-pricing-features li {
+	padding: 0.35rem 0;
+	border-bottom: 1px solid #f3f4f6;
+}
+
+.rocketkit-pricing-button {
+	display: inline-block;
+	margin-top: 0.5rem;
+	padding: 0.65rem 1.25rem;
+	background: #03a84e;
+	color: #fff !important;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.rocketkit-pricing-card.is-featured .rocketkit-pricing-button {
+	background: #028a41;
+}

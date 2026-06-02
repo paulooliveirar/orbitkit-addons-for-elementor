@@ -1,0 +1,806 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RocketKit Addons 1.4.0\n"
+"Report-Msgid-Bugs-To: https://orbittech.com.br\n"
+"POT-Creation-Date: 2026-06-02 00:38:45+0000\n"
+"PO-Revision-Date: 2026-06-02 00:38:45+0000\n"
+"Last-Translator: RocketKit\n"
+"Language-Team: RocketKit\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: rocketkit-addons-for-elementor\n"
+
+
+msgid "%1$d of %2$d widgets active in Elementor."
+msgstr ""
+
+msgid "API key"
+msgstr ""
+
+msgid "API keys & services"
+msgstr ""
+
+msgid "About RocketKit"
+msgstr ""
+
+msgid "Accent / icon"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "After"
+msgstr ""
+
+msgid "After 5 characters, choose a suggestion to set coordinates automatically."
+msgstr ""
+
+msgid "After image"
+msgstr ""
+
+msgid "After label"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "All Widgets"
+msgstr ""
+
+msgid "Area (GeoJSON)"
+msgstr ""
+
+msgid "Background"
+msgstr ""
+
+msgid "Basic"
+msgstr ""
+
+msgid "Before"
+msgstr ""
+
+msgid "Before and after image slider with horizontal or vertical handle."
+msgstr ""
+
+msgid "Before image"
+msgstr ""
+
+msgid "Before label"
+msgstr ""
+
+msgid "Bio"
+msgstr ""
+
+msgid "Blur"
+msgstr ""
+
+msgid "Border color"
+msgstr ""
+
+msgid "Border radius"
+msgstr ""
+
+msgid "Border width"
+msgstr ""
+
+msgid "Button"
+msgstr ""
+
+msgid "Button URL"
+msgstr ""
+
+msgid "Button text"
+msgstr ""
+
+msgid "Capsule"
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "Carto Dark"
+msgstr ""
+
+msgid "Carto Light"
+msgstr ""
+
+msgid "Center latitude"
+msgstr ""
+
+msgid "Center longitude"
+msgstr ""
+
+msgid "Changes apply after saving. Disabled widgets are hidden in Elementor."
+msgstr ""
+
+msgid "Circle"
+msgstr ""
+
+msgid "City, address or place…"
+msgstr ""
+
+msgid "Clear filters"
+msgstr ""
+
+msgid "Color"
+msgstr ""
+
+msgid "Compare"
+msgstr ""
+
+msgid "Configure the Google Maps API key under %s → Integrations."
+msgstr ""
+
+msgid "Configured"
+msgstr ""
+
+msgid "Connect third-party services used by your widgets."
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Coordinates"
+msgstr ""
+
+msgid "Coordinates (manual)"
+msgstr ""
+
+msgid "Coordinates updated."
+msgstr ""
+
+msgid "Corner"
+msgstr ""
+
+msgid "Countdown"
+msgstr ""
+
+msgid "Custom icon / SVG"
+msgstr ""
+
+msgid "Days"
+msgstr ""
+
+msgid "Days label"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Developer"
+msgstr ""
+
+msgid "Diamond"
+msgstr ""
+
+msgid "Disable all"
+msgstr ""
+
+msgid "Display mode"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Draw your area on GeoJSON.io, then copy the JSON and paste it in the field below."
+msgstr ""
+
+msgid "Drop"
+msgstr ""
+
+msgid "Due date"
+msgstr ""
+
+msgid "Elements"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Enable %s"
+msgstr ""
+
+msgid "Enable Maps JavaScript API and Visualization API in the %s."
+msgstr ""
+
+msgid "Enable all"
+msgstr ""
+
+msgid "Enable section"
+msgstr ""
+
+msgid "Enable widgets"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Event countdown timer."
+msgstr ""
+
+msgid "Expired message"
+msgstr ""
+
+msgid "Featured"
+msgstr ""
+
+msgid "Featured plan"
+msgstr ""
+
+msgid "Features (one per line)"
+msgstr ""
+
+msgid "Features list"
+msgstr ""
+
+msgid "Fill color"
+msgstr ""
+
+msgid "Fill on hover"
+msgstr ""
+
+msgid "Fill opacity"
+msgstr ""
+
+msgid "Filter category"
+msgstr ""
+
+msgid "For Elementor"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Geocoding service unavailable."
+msgstr ""
+
+msgid "Google Maps"
+msgstr ""
+
+msgid "Handler"
+msgstr ""
+
+msgid "Handler style"
+msgstr ""
+
+msgid "Heatmap"
+msgstr ""
+
+msgid "Heatmap points"
+msgstr ""
+
+msgid "Height (px)"
+msgstr ""
+
+msgid "High intensity color"
+msgstr ""
+
+msgid "Horizontal"
+msgstr ""
+
+msgid "Hours"
+msgstr ""
+
+msgid "Hours label"
+msgstr ""
+
+msgid "Hover"
+msgstr ""
+
+msgid "Hover border color"
+msgstr ""
+
+msgid "Hover fill color"
+msgstr ""
+
+msgid "Hover fill opacity"
+msgstr ""
+
+msgid "Icon height"
+msgstr ""
+
+msgid "Icon image"
+msgstr ""
+
+msgid "Icon width"
+msgstr ""
+
+msgid "If you enable Google Maps and add an API key, map data is loaded from Google according to the Google Maps Platform Terms."
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "Image Compare"
+msgstr ""
+
+msgid "Image Stack Group"
+msgstr ""
+
+msgid "Image comparison slider"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "In the Elementor editor only, location search may query nominatim.openstreetmap.org. Only authenticated users who can edit content can trigger this."
+msgstr ""
+
+msgid "Inactive"
+msgstr ""
+
+msgid "Inline SVG code"
+msgstr ""
+
+msgid "Integrations"
+msgstr ""
+
+msgid "Intensity"
+msgstr ""
+
+msgid "Interactive Map"
+msgstr ""
+
+msgid "Interactive map"
+msgstr ""
+
+msgid "Label"
+msgstr ""
+
+msgid "Label box"
+msgstr ""
+
+msgid "Labels"
+msgstr ""
+
+msgid "Large"
+msgstr ""
+
+msgid "Latitude"
+msgstr ""
+
+msgid "Leaflet popup shell"
+msgstr ""
+
+msgid "Line breaks are shown in the map popup."
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "LinkedIn"
+msgstr ""
+
+msgid "LinkedIn URL"
+msgstr ""
+
+msgid "Links"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Location not found."
+msgstr ""
+
+msgid "Longitude"
+msgstr ""
+
+msgid "Low intensity color"
+msgstr ""
+
+msgid "Map"
+msgstr ""
+
+msgid "Map canvas"
+msgstr ""
+
+msgid "Map container"
+msgstr ""
+
+msgid "Map default"
+msgstr ""
+
+msgid "Map style (Leaflet)"
+msgstr ""
+
+msgid "Maps with markers, heatmap, or selectable regions."
+msgstr ""
+
+msgid "Marker color"
+msgstr ""
+
+msgid "Marker description"
+msgstr ""
+
+msgid "Marker list"
+msgstr ""
+
+msgid "Marker popup"
+msgstr ""
+
+msgid "Marker settings"
+msgstr ""
+
+msgid "Marker shape"
+msgstr ""
+
+msgid "Marker size"
+msgstr ""
+
+msgid "Marker title"
+msgstr ""
+
+msgid "Marker type"
+msgstr ""
+
+msgid "Markers"
+msgstr ""
+
+msgid "Max visible images"
+msgstr ""
+
+msgid "Media"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Member"
+msgstr ""
+
+msgid "Member 1"
+msgstr ""
+
+msgid "Member 2"
+msgstr ""
+
+msgid "Member 3"
+msgstr ""
+
+msgid "Mid intensity color"
+msgstr ""
+
+msgid "Minutes"
+msgstr ""
+
+msgid "Minutes label"
+msgstr ""
+
+msgid "Mouse wheel zoom"
+msgstr ""
+
+msgid "Move on hover"
+msgstr ""
+
+msgid "Multi-column pricing plans."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No places found. Try another search."
+msgstr ""
+
+msgid "No widgets found"
+msgstr ""
+
+msgid "Normal"
+msgstr ""
+
+msgid "Not set"
+msgstr ""
+
+msgid "Numbers"
+msgstr ""
+
+msgid "Open GeoJSON.io"
+msgstr ""
+
+msgid "OpenStreetMap"
+msgstr ""
+
+msgid "OpenStreetMap (free)"
+msgstr ""
+
+msgid "Optional. Paste SVG markup (overrides the image above when filled)."
+msgstr ""
+
+msgid "Orientation"
+msgstr ""
+
+msgid "Overlap"
+msgstr ""
+
+msgid "Overlapping image stack with shapes, tooltips, and spread on hover."
+msgstr ""
+
+msgid "Overview & support"
+msgstr ""
+
+msgid "PNG, JPG, GIF or SVG from the media library."
+msgstr ""
+
+msgid "Padding"
+msgstr ""
+
+msgid "Paste a GeoJSON Feature, FeatureCollection, or Polygon from GeoJSON.io."
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid "Pin"
+msgstr ""
+
+msgid "Plan card"
+msgstr ""
+
+msgid "Plan name"
+msgstr ""
+
+msgid "Plan title"
+msgstr ""
+
+msgid "Plans"
+msgstr ""
+
+msgid "Plugin overview and quick links."
+msgstr ""
+
+msgid "Point"
+msgstr ""
+
+msgid "Point name"
+msgstr ""
+
+msgid "Point radius"
+msgstr ""
+
+msgid "Points"
+msgstr ""
+
+msgid "Popular"
+msgstr ""
+
+msgid "Popup arrow color (Leaflet)"
+msgstr ""
+
+msgid "Preset shapes"
+msgstr ""
+
+msgid "Price"
+msgstr ""
+
+msgid "Pricing Table"
+msgstr ""
+
+msgid "Production-ready Elementor widgets with per-widget assets, region-based maps, and a focused editor experience."
+msgstr ""
+
+msgid "Provider"
+msgstr ""
+
+msgid "Query must be at least 5 characters."
+msgstr ""
+
+msgid "Quick filters"
+msgstr ""
+
+msgid "Region"
+msgstr ""
+
+msgid "Region 1"
+msgstr ""
+
+msgid "Region description"
+msgstr ""
+
+msgid "Region label"
+msgstr ""
+
+msgid "Region list"
+msgstr ""
+
+msgid "Region tooltip"
+msgstr ""
+
+msgid "Regions"
+msgstr ""
+
+msgid "Regions (hover highlight)"
+msgstr ""
+
+msgid "Required when the Interactive Map widget uses Google Maps as provider."
+msgstr ""
+
+msgid "RocketKit"
+msgstr ""
+
+msgid "RocketKit Addons"
+msgstr ""
+
+msgid "RocketKit Addons For Elementor"
+msgstr ""
+
+msgid "RocketKit Addons For Elementor may send data to third-party services depending on which widgets and settings you use:"
+msgstr ""
+
+msgid "RocketKit Addons For Elementor requires Elementor to be installed and active."
+msgstr ""
+
+msgid "RocketKit Addons For Elementor requires Elementor version %s or newer."
+msgstr ""
+
+msgid "RocketKit team member."
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Rounded"
+msgstr ""
+
+msgid "Save settings"
+msgstr ""
+
+msgid "Scroll over the map to zoom in or out."
+msgstr ""
+
+msgid "Search by name…"
+msgstr ""
+
+msgid "Search failed. Please try again."
+msgstr ""
+
+msgid "Search location"
+msgstr ""
+
+msgid "Search query is empty."
+msgstr ""
+
+msgid "Search widgets"
+msgstr ""
+
+msgid "Searching…"
+msgstr ""
+
+msgid "Seconds"
+msgstr ""
+
+msgid "Seconds label"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Settings sections"
+msgstr ""
+
+msgid "Shape"
+msgstr ""
+
+msgid "Show +N badge"
+msgstr ""
+
+msgid "Show labels"
+msgstr ""
+
+msgid "Shown in the list and as the region title on hover."
+msgstr ""
+
+msgid "Shown on hover over the highlighted area. Line breaks are preserved."
+msgstr ""
+
+msgid "Shows remaining count when max visible is set."
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Small"
+msgstr ""
+
+msgid "Solid fill on hover covers thin gaps between polygon borders."
+msgstr ""
+
+msgid "Spacing from label"
+msgstr ""
+
+msgid "Spacing from title"
+msgstr ""
+
+msgid "Spread on hover"
+msgstr ""
+
+msgid "Square"
+msgstr ""
+
+msgid "Stack"
+msgstr ""
+
+msgid "Stack item"
+msgstr ""
+
+msgid "Starting position"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "Table layout"
+msgstr ""
+
+msgid "Team Member"
+msgstr ""
+
+msgid "Team profile card with photo and links."
+msgstr ""
+
+msgid "Text color"
+msgstr ""
+
+msgid "The plugin stores your widget enable/disable preferences and optional Google Maps API key in the WordPress database. No personal data is collected by the plugin authors."
+msgstr ""
+
+msgid "The pointer uses the same fill as the card background so there is no gap between the tooltip and the arrow."
+msgstr ""
+
+msgid "Thin line"
+msgstr ""
+
+msgid "Time is up!"
+msgstr ""
+
+msgid "Time unit box"
+msgstr ""
+
+msgid "Timer"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Toggle widget"
+msgstr ""
+
+msgid "Tooltip"
+msgstr ""
+
+msgid "Total widgets"
+msgstr ""
+
+msgid "Try a different search term or reset your filters."
+msgstr ""
+
+msgid "Type at least 5 characters to see suggestions."
+msgstr ""
+
+msgid "Vertical"
+msgstr ""
+
+msgid "When the Interactive Map widget uses the Leaflet provider, visitors' browsers load map tiles from tile servers. IP addresses and request metadata may be logged by those providers."
+msgstr ""
+
+msgid "Wrapper"
+msgstr ""
+
+msgid "Wrapper background"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Zoom"
+msgstr ""

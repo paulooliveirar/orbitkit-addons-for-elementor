@@ -1,0 +1,200 @@
+.rocketkit-map-widget {
+	position: relative;
+	width: 100%;
+}
+
+.rocketkit-map-canvas {
+	width: 100%;
+	border-radius: 8px;
+	overflow: hidden;
+	z-index: 1;
+}
+
+/* Leaflet: inner popup uses Elementor styles on .rocketkit-marker-popup */
+.rocketkit-map-widget .leaflet-popup.rocketkit-leaflet-popup .leaflet-popup-content-wrapper {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+}
+
+.rocketkit-map-widget .leaflet-popup.rocketkit-leaflet-popup .leaflet-popup-content {
+	margin: 0;
+	min-width: 140px;
+	line-height: 1.5;
+}
+
+.rocketkit-marker-popup {
+	display: block;
+	box-sizing: border-box;
+}
+
+.rocketkit-marker-popup__title {
+	display: block;
+	font-weight: 600;
+}
+
+.rocketkit-marker-popup__description {
+	display: block;
+	line-height: 1.5;
+}
+
+.rocketkit-marker-popup__description:empty {
+	display: none;
+}
+
+/* Google Maps InfoWindow */
+.rocketkit-map-widget .gm-style .rocketkit-marker-popup {
+	box-sizing: border-box;
+}
+
+/* Custom map markers */
+.rocketkit-map-marker-wrap {
+	background: transparent !important;
+	border: none !important;
+}
+
+.rocketkit-map-marker {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 0;
+}
+
+.rocketkit-map-marker svg {
+	display: block;
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.28));
+}
+
+/* Region tooltips (Leaflet) — pane + card */
+.rocketkit-map-widget .leaflet-tooltip-pane {
+	z-index: 700;
+	pointer-events: none;
+}
+
+.rocketkit-map-widget .leaflet-tooltip.rocketkit-region-tooltip-wrap {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+	color: inherit;
+	white-space: normal;
+	opacity: 0;
+	transform: translate3d(0, 8px, 0) scale(0.96);
+	transform-origin: center bottom;
+	transition:
+		opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+	will-change: opacity, transform;
+}
+
+.rocketkit-map-widget .leaflet-tooltip.rocketkit-region-tooltip-wrap.rocketkit-region-tooltip--show {
+	opacity: 1;
+	transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Leaflet arrow uses border lines; we use a solid fill caret instead */
+.rocketkit-map-widget .leaflet-tooltip.rocketkit-region-tooltip-wrap::before {
+	display: none;
+}
+
+.rocketkit-region-tooltip-shell {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	--rk-region-tooltip-fill: #fff;
+}
+
+.rocketkit-region-tooltip {
+	display: block;
+	box-sizing: border-box;
+	min-width: 120px;
+	max-width: 280px;
+	padding: 10px 14px;
+	background: var(--rk-region-tooltip-fill);
+	border: 1px solid rgba(15, 23, 42, 0.08);
+	border-radius: 10px;
+	box-shadow:
+		0 2px 4px rgba(15, 23, 42, 0.04),
+		0 8px 24px rgba(15, 23, 42, 0.12);
+	line-height: 1.45;
+}
+
+.rocketkit-region-tooltip__caret {
+	display: block;
+	flex-shrink: 0;
+	width: 14px;
+	height: 8px;
+	margin-top: -1px;
+	background: var(--rk-region-tooltip-fill);
+	clip-path: polygon(50% 100%, 0 0, 100% 0);
+	filter: drop-shadow(0 1px 0 rgba(15, 23, 42, 0.08));
+	pointer-events: none;
+}
+
+.rocketkit-map-widget .leaflet-tooltip-bottom.rocketkit-region-tooltip-wrap .rocketkit-region-tooltip-shell {
+	flex-direction: column-reverse;
+}
+
+.rocketkit-map-widget .leaflet-tooltip-bottom.rocketkit-region-tooltip-wrap .rocketkit-region-tooltip__caret {
+	margin-top: 0;
+	margin-bottom: -1px;
+	clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+}
+
+.rocketkit-map-widget .leaflet-tooltip-left.rocketkit-region-tooltip-wrap .rocketkit-region-tooltip-shell,
+.rocketkit-map-widget .leaflet-tooltip-right.rocketkit-region-tooltip-wrap .rocketkit-region-tooltip-shell {
+	flex-direction: row;
+	align-items: center;
+}
+
+.rocketkit-map-widget .leaflet-tooltip-left.rocketkit-region-tooltip-wrap .rocketkit-region-tooltip__caret {
+	width: 8px;
+	height: 14px;
+	margin-top: 0;
+	margin-right: -1px;
+	clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+.rocketkit-map-widget .leaflet-tooltip-right.rocketkit-region-tooltip-wrap .rocketkit-region-tooltip__caret {
+	width: 8px;
+	height: 14px;
+	margin-top: 0;
+	margin-left: -1px;
+	clip-path: polygon(100% 50%, 0 0, 0 100%);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+	.rocketkit-region-tooltip-shell {
+		--rk-region-tooltip-fill: rgba(255, 255, 255, 0.94);
+	}
+
+	.rocketkit-region-tooltip {
+		backdrop-filter: blur(10px);
+	}
+}
+
+.rocketkit-region-tooltip__title {
+	display: block;
+	font-weight: 600;
+	font-size: 0.9375rem;
+	line-height: 1.35;
+	letter-spacing: -0.01em;
+}
+
+.rocketkit-region-tooltip__description {
+	display: block;
+	margin-top: 0.35em;
+	font-size: 0.8125rem;
+	line-height: 1.5;
+	opacity: 0.88;
+}
+
+.rocketkit-region-tooltip__description:empty {
+	display: none;
+}
+
+.rocketkit-region-tooltip__title:empty + .rocketkit-region-tooltip__description {
+	margin-top: 0;
+}
