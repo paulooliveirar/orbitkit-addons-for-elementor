@@ -92,6 +92,9 @@ No data is sent to Orbittech servers by this plugin.
 == Changelog ==
 
 = 1.5.0 =
+* Change plugin name
+
+= 1.5.0 =
 * fix: image stack e workflow release
 
 = 1.4.0 =
