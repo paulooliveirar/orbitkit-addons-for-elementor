@@ -41,7 +41,25 @@ svn commit -m "Add plugin directory banner"
 
 Reference: [Plugin Assets (headers, icons, banners)](https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/).
 
+## Versioning and git tags
+
+See [RELEASE.md](RELEASE.md). Summary:
+
+1. Set the version in `VERSION` (or run `./scripts/release.sh patch|minor|major|X.Y.Z "changelog"`).
+2. Push tag `vX.Y.Z` — GitHub Actions builds the ZIP and attaches it to the release.
+
+```bash
+./scripts/release.sh 1.5.0 "Short changelog line" --push
+```
+
 ## Build release ZIP
+
+```bash
+./scripts/build-zip.sh
+# → build/rocketkit-addons-for-elementor-X.Y.Z.zip
+```
+
+Manual alternative:
 
 ```bash
 cd rocketkit-addons-for-elementor

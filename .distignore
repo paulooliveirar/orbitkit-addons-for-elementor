@@ -1,4 +1,8 @@
 # Development-only files (exclude from WordPress.org release ZIP).
+/.github/
+/scripts/
+/VERSION
+/RELEASE.md
 /.wordpress-org/
 /languages/*.pot
 /languages/*.po

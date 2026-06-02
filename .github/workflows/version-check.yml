@@ -1,0 +1,24 @@
+name: Version check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  version-consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify VERSION matches plugin files
+        run: |
+          bash scripts/sync-version.sh
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Version mismatch. Run: ./scripts/sync-version.sh" >&2
+            git diff
+            exit 1
+          fi

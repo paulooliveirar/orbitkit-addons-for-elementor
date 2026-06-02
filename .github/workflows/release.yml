@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve version from tag
+        id: meta
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          echo "tag=${TAG}" >> "${GITHUB_OUTPUT}"
+          echo "version=${VERSION}" >> "${GITHUB_OUTPUT}"
+
+      - name: Verify VERSION file matches tag
+        run: |
+          FILE_VERSION="$(tr -d '[:space:]' < VERSION)"
+          if [[ "${FILE_VERSION}" != "${{ steps.meta.outputs.version }}" ]]; then
+            echo "VERSION file (${FILE_VERSION}) does not match tag (${{ steps.meta.outputs.version }})." >&2
+            exit 1
+          fi
+
+      - name: Verify plugin constant matches tag
+        run: |
+          PLUGIN_VERSION="$(grep -m1 "define( 'ROCKETKIT_ELEMENTOR_VERSION'" rocketkit-elementor-addon.php | sed -E "s/.*'([^']+)'.*/\1/")"
+          if [[ "${PLUGIN_VERSION}" != "${{ steps.meta.outputs.version }}" ]]; then
+            echo "ROCKETKIT_ELEMENTOR_VERSION (${PLUGIN_VERSION}) does not match tag." >&2
+            exit 1
+          fi
+
+      - name: Sync version (safety check)
+        run: bash scripts/sync-version.sh
+
+      - name: Ensure working tree is clean after sync
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "Version files are out of sync. Run ./scripts/release.sh before tagging." >&2
+            git status --short
+            exit 1
+          fi
+
+      - name: Build release ZIP
+        run: |
+          ZIP_PATH="$(bash scripts/build-zip.sh)"
+          echo "zip_path=${ZIP_PATH}" >> "${GITHUB_ENV}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ steps.meta.outputs.tag }}
+          generate_release_notes: true
+          files: ${{ env.zip_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

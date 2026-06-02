@@ -191,20 +191,20 @@ class Widget_Image_Stack extends Widget_Base {
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'default'      => '',
-				'description'  => esc_html__( 'Shows remaining count when max visible is set.', 'rocketkit-addons-for-elementor' ),
+				'description'  => esc_html__( 'Shows a +N badge for images beyond the max visible limit.', 'rocketkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'max_visible',
 			array(
-				'label'     => esc_html__( 'Max visible images', 'rocketkit-addons-for-elementor' ),
-				'type'      => Controls_Manager::NUMBER,
-				'min'       => 0,
-				'max'       => 12,
-				'step'      => 1,
-				'default'   => 0,
-				'condition' => array( 'show_overflow_count' => 'yes' ),
+				'label'       => esc_html__( 'Max visible images', 'rocketkit-addons-for-elementor' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => 0,
+				'max'         => 12,
+				'step'        => 1,
+				'default'     => 0,
+				'description' => esc_html__( '0 shows all images. Use with +N badge to display remaining count.', 'rocketkit-addons-for-elementor' ),
 			)
 		);
 
@@ -286,6 +286,7 @@ class Widget_Image_Stack extends Widget_Base {
 				'default'   => '#1e293b',
 				'selectors' => array(
 					'{{WRAPPER}} .rocketkit-image-stack__tooltip' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .rocketkit-image-stack__tooltip::after' => 'border-top-color: {{VALUE}};',
 				),
 			)
 		);
@@ -315,8 +316,8 @@ class Widget_Image_Stack extends Widget_Base {
 			return '';
 		}
 
-		$image_settings = $settings;
-		$image_settings['stack_thumb'] = $item['stack_image'];
+		$image_settings                = $settings;
+		$image_settings['stack_image'] = $item['stack_image'];
 
 		return Group_Control_Image_Size::get_attachment_image_html( $image_settings, 'stack_thumb', 'stack_image' );
 	}
@@ -333,7 +334,7 @@ class Widget_Image_Stack extends Widget_Base {
 		$shape         = isset( $settings['stack_shape'] ) ? $settings['stack_shape'] : 'circle';
 		$spread        = ! isset( $settings['spread_on_hover'] ) || 'yes' === $settings['spread_on_hover'];
 		$show_overflow = ! empty( $settings['show_overflow_count'] ) && 'yes' === $settings['show_overflow_count'];
-		$max_visible   = $show_overflow && ! empty( $settings['max_visible'] ) ? (int) $settings['max_visible'] : 0;
+		$max_visible   = ! empty( $settings['max_visible'] ) ? max( 0, (int) $settings['max_visible'] ) : 0;
 
 		$total   = count( $items );
 		$visible = $max_visible > 0 ? min( $max_visible, $total ) : $total;
@@ -365,24 +366,18 @@ class Widget_Image_Stack extends Widget_Base {
 					}
 
 					$tooltip = isset( $item['stack_tooltip'] ) ? $item['stack_tooltip'] : '';
-					$link = isset( $item['stack_link']['url'] ) ? $item['stack_link']['url'] : '';
-					$target = ! empty( $item['stack_link']['is_external'] ) ? ' target="_blank"' : '';
-					$rel_parts = array();
-					if ( ! empty( $item['stack_link']['is_external'] ) ) {
-						$rel_parts[] = 'noopener';
-						$rel_parts[] = 'noreferrer';
-					}
-					if ( ! empty( $item['stack_link']['nofollow'] ) ) {
-						$rel_parts[] = 'nofollow';
-					}
-					$rel = ! empty( $rel_parts ) ? ' rel="' . esc_attr( implode( ' ', $rel_parts ) ) . '"' : '';
+					$link    = isset( $item['stack_link']['url'] ) ? $item['stack_link']['url'] : '';
 
 					$item_classes = 'rocketkit-image-stack__item';
 					$item_classes .= ' rocketkit-image-stack__item--index-' . (int) $index;
 					?>
 					<div class="<?php echo esc_attr( $item_classes ); ?>" style="--rk-stack-index: <?php echo (int) $index; ?>;">
 						<?php if ( $link ) : ?>
-							<a class="rocketkit-image-stack__link" href="<?php echo esc_url( $link ); ?>"<?php echo $target . $rel; // phpcs:ignore ?>>
+							<?php
+							$this->add_link_attributes( 'stack_link_' . $index, $item['stack_link'] );
+							$this->add_render_attribute( 'stack_link_' . $index, 'class', 'rocketkit-image-stack__link' );
+							?>
+							<a <?php $this->print_render_attribute_string( 'stack_link_' . $index ); ?>>
 						<?php endif; ?>
 							<span class="rocketkit-image-stack__thumb">
 								<?php echo $img_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -398,10 +393,10 @@ class Widget_Image_Stack extends Widget_Base {
 					++$index;
 				}
 
-				if ( $hidden > 0 ) :
+				if ( $show_overflow && $hidden > 0 ) :
 					?>
 					<div class="rocketkit-image-stack__item rocketkit-image-stack__item--overflow" style="--rk-stack-index: <?php echo (int) $visible; ?>;">
-						<span class="rocketkit-image-stack__overflow">+<?php echo (int) $hidden; ?></span>
+						<span class="rocketkit-image-stack__overflow" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: extra image count */ esc_html__( '%d more images', 'rocketkit-addons-for-elementor' ), $hidden ) ); ?>">+<?php echo (int) $hidden; ?></span>
 					</div>
 				<?php endif; ?>
 			</div>
