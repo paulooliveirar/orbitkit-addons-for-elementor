@@ -43,17 +43,17 @@ function orbitkit_elementor_addon_activate() {
 
 	$widgets_key       = OrbitKit\Elementor\Includes\OrbitKit_Elementor_Settings::OPTION_KEY;
 	$integrations_key  = OrbitKit\Elementor\Includes\OrbitKit_Elementor_Settings::INTEGRATIONS_OPTION_KEY;
-	$legacy_widgets    = get_option( 'rocketkit_elementor_active_widgets', false );
-	$legacy_integrations = get_option( 'rocketkit_elementor_integrations', false );
+	$legacy_widgets    = get_option( 'orbitkit_elementor_active_widgets', false );
+	$legacy_integrations = get_option( 'orbitkit_elementor_integrations', false );
 
 	if ( false !== $legacy_widgets && false === get_option( $widgets_key ) ) {
 		update_option( $widgets_key, $legacy_widgets );
-		delete_option( 'rocketkit_elementor_active_widgets' );
+		delete_option( 'orbitkit_elementor_active_widgets' );
 	}
 
 	if ( false !== $legacy_integrations && false === get_option( $integrations_key ) ) {
 		update_option( $integrations_key, $legacy_integrations );
-		delete_option( 'rocketkit_elementor_integrations' );
+		delete_option( 'orbitkit_elementor_integrations' );
 	}
 
 	if ( false === get_option( $widgets_key ) ) {

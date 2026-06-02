@@ -68,7 +68,11 @@ zip -r ../orbitkit-addons-for-elementor.zip . \
   -x "languages/*.pot" \
   -x "languages/*.po" \
   -x ".distignore" \
-  -x "WORDPRESS-ORG.md"
+  -x "./scripts/*" \
+  -x "./.wordpress-org/*" \
+  -x "WORDPRESS-ORG.md" \
+  -x "VERSION" \
+  -x "RELEASE.md"
 ```
 
 ## Checklist

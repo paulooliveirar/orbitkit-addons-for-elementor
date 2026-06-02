@@ -15,5 +15,5 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 delete_option( 'orbitkit_elementor_active_widgets' );
 delete_option( 'orbitkit_elementor_integrations' );
-delete_option( 'rocketkit_elementor_active_widgets' );
-delete_option( 'rocketkit_elementor_integrations' );
+delete_option( 'orbitkit_elementor_active_widgets' );
+delete_option( 'orbitkit_elementor_integrations' );

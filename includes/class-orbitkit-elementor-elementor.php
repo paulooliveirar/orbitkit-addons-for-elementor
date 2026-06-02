@@ -33,18 +33,18 @@ class OrbitKit_Elementor_Elementor {
 	}
 
 	/**
-	 * Map RocketKit widget type IDs saved in Elementor JSON to OrbitKit IDs.
+	 * Map Orbitkit widget type IDs saved in Elementor JSON to OrbitKit IDs.
 	 *
 	 * @return array<string, string>
 	 */
 	private static function get_legacy_widget_type_map() {
 		return array(
-			'rocketkit_interactive_map' => 'orbitkit_interactive_map',
-			'rocketkit_pricing_table'   => 'orbitkit_pricing_table',
-			'rocketkit_team_member'     => 'orbitkit_team_member',
-			'rocketkit_countdown'       => 'orbitkit_countdown',
-			'rocketkit_image_compare'   => 'orbitkit_image_compare',
-			'rocketkit_image_stack'     => 'orbitkit_image_stack',
+			'orbitkit_interactive_map' => 'orbitkit_interactive_map',
+			'orbitkit_pricing_table'   => 'orbitkit_pricing_table',
+			'orbitkit_team_member'     => 'orbitkit_team_member',
+			'orbitkit_countdown'       => 'orbitkit_countdown',
+			'orbitkit_image_compare'   => 'orbitkit_image_compare',
+			'orbitkit_image_stack'     => 'orbitkit_image_stack',
 		);
 	}
 
