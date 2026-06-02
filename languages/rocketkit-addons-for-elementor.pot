@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: RocketKit Addons 1.4.0\n"
+"Project-Id-Version: RocketKit Addons 1.5.0\n"
 "Report-Msgid-Bugs-To: https://orbittech.com.br\n"
 "POT-Creation-Date: 2026-06-02 00:38:45+0000\n"
 "PO-Revision-Date: 2026-06-02 00:38:45+0000\n"

@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.4
 Requires Plugins: elementor
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,9 @@ Used in the Elementor editor when searching for marker locations (authenticated 
 No data is sent to Orbittech servers by this plugin.
 
 == Changelog ==
+
+= 1.5.0 =
+* fix: image stack e workflow release
 
 = 1.4.0 =
 * WordPress.org readiness: readme, privacy policy, uninstall cleanup, directory hardening.

@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       RocketKit Addons For Elementor
  * Description:       Extends Elementor with RocketKit widgets: maps, pricing, team, countdown, image compare, image stack, and more — with full style controls.
- * Version:           1.4.0
+ * Version:           1.5.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  elementor
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ROCKETKIT_ELEMENTOR_VERSION', '1.4.0' );
+define( 'ROCKETKIT_ELEMENTOR_VERSION', '1.5.0' );
 define( 'ROCKETKIT_ELEMENTOR_MIN_ELEMENTOR', '3.5.0' );
 define( 'ROCKETKIT_ELEMENTOR_NAME', 'RocketKit Addons For Elementor' );
 define( 'ROCKETKIT_ELEMENTOR_SLUG', 'rocketkit-addons-for-elementor' );
