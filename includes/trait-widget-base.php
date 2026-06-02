@@ -2,16 +2,16 @@
 /**
  * Shared widget helpers.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Includes\Traits;
+namespace OrbitKit\Elementor\Includes\Traits;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RocketKit\Elementor\Includes\RocketKit_Widget_Registry;
+use OrbitKit\Elementor\Includes\OrbitKit_Widget_Registry;
 
 /**
  * Widget slug and asset depends.
@@ -29,13 +29,13 @@ trait Widget_Base {
 	 * @return array<int, string>
 	 */
 	public function get_style_depends() {
-		return RocketKit_Widget_Registry::get_style_depends( $this->get_widget_slug() );
+		return OrbitKit_Widget_Registry::get_style_depends( $this->get_widget_slug() );
 	}
 
 	/**
 	 * @return array<int, string>
 	 */
 	public function get_script_depends() {
-		return RocketKit_Widget_Registry::get_script_depends( $this->get_widget_slug() );
+		return OrbitKit_Widget_Registry::get_script_depends( $this->get_widget_slug() );
 	}
 }

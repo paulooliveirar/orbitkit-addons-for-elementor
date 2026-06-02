@@ -1,8 +1,8 @@
-.rocketkit-place-search-wrap {
+.orbitkit-place-search-wrap {
 	position: relative;
 }
 
-.rocketkit-place-suggestions {
+.orbitkit-place-suggestions {
 	position: absolute;
 	top: calc(100% + 4px);
 	left: 0;
@@ -19,7 +19,7 @@
 	overflow: hidden;
 }
 
-.rocketkit-place-suggestions__item {
+.orbitkit-place-suggestions__item {
 	padding: 10px 12px;
 	font-size: 12px;
 	line-height: 1.4;
@@ -31,17 +31,17 @@
 	text-overflow: ellipsis;
 }
 
-.rocketkit-place-suggestions__item:last-child {
+.orbitkit-place-suggestions__item:last-child {
 	border-bottom: none;
 }
 
-.rocketkit-place-suggestions__item:hover,
-.rocketkit-place-suggestions__item.is-active {
+.orbitkit-place-suggestions__item:hover,
+.orbitkit-place-suggestions__item.is-active {
 	background: #f0f7ff;
 	color: #028a41;
 }
 
-.rocketkit-place-suggestions__item:focus {
+.orbitkit-place-suggestions__item:focus {
 	outline: none;
 	background: #e8f8ef;
 }

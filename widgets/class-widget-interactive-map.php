@@ -2,29 +2,29 @@
 /**
  * Interactive Map Elementor widget.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Widgets;
+namespace OrbitKit\Elementor\Widgets;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use RocketKit\Elementor\Includes\RocketKit_Sanitizer;
+use OrbitKit\Elementor\Includes\OrbitKit_Sanitizer;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Widget_Base;
-use RocketKit\Elementor\Includes\RocketKit_Elementor_Settings;
-use RocketKit\Elementor\Includes\Traits\Widget_Base as RocketKit_Widget_Base;
-use RocketKit\Elementor\Includes\Traits\Widget_Style_Controls;
+use OrbitKit\Elementor\Includes\OrbitKit_Elementor_Settings;
+use OrbitKit\Elementor\Includes\Traits\Widget_Base as OrbitKit_Widget_Base;
+use OrbitKit\Elementor\Includes\Traits\Widget_Style_Controls;
 
 /**
  * Map with markers, heatmap, or hover-highlighted regions (Leaflet/OSM or Google Maps).
  */
 class Widget_Interactive_Map extends Widget_Base {
 
-	use RocketKit_Widget_Base;
+	use OrbitKit_Widget_Base;
 	use Widget_Style_Controls;
 
 	/**
@@ -38,14 +38,14 @@ class Widget_Interactive_Map extends Widget_Base {
 	 * @return string
 	 */
 	public function get_name() {
-		return 'rocketkit_interactive_map';
+		return 'orbitkit_interactive_map';
 	}
 
 	/**
 	 * @return string
 	 */
 	public function get_title() {
-		return esc_html__( 'Interactive Map', 'rocketkit-addons-for-elementor' );
+		return esc_html__( 'Interactive Map', 'orbitkit-addons-for-elementor' );
 	}
 
 	/**
@@ -59,14 +59,14 @@ class Widget_Interactive_Map extends Widget_Base {
 	 * @return array<int, string>
 	 */
 	public function get_categories() {
-		return array( 'rocketkit' );
+		return array( 'orbitkit' );
 	}
 
 	/**
 	 * @return array<int, string>
 	 */
 	public function get_keywords() {
-		return array( 'map', 'heatmap', 'leaflet', 'google', 'region', 'rocketkit', 'rocket kit' );
+		return array( 'map', 'heatmap', 'leaflet', 'google', 'region', 'orbitkit', 'orbit kit' );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Widget_Interactive_Map extends Widget_Base {
 	 * @return array<int, string>
 	 */
 	public function get_editor_script_depends() {
-		return array( 'rocketkit-widget-interactive-map-editor' );
+		return array( 'orbitkit-widget-interactive-map-editor' );
 	}
 
 	/**
@@ -85,7 +85,7 @@ class Widget_Interactive_Map extends Widget_Base {
 	 */
 	public function get_editor_style_depends() {
 		return array(
-			'rocketkit-widget-interactive-map-editor',
+			'orbitkit-widget-interactive-map-editor',
 		);
 	}
 
@@ -96,19 +96,19 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->start_controls_section(
 			'section_map',
 			array(
-				'label' => esc_html__( 'Map', 'rocketkit-addons-for-elementor' ),
+				'label' => esc_html__( 'Map', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'map_provider',
 			array(
-				'label'   => esc_html__( 'Provider', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Provider', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'leaflet',
 				'options' => array(
-					'leaflet' => esc_html__( 'OpenStreetMap (free)', 'rocketkit-addons-for-elementor' ),
-					'google'  => esc_html__( 'Google Maps', 'rocketkit-addons-for-elementor' ),
+					'leaflet' => esc_html__( 'OpenStreetMap (free)', 'orbitkit-addons-for-elementor' ),
+					'google'  => esc_html__( 'Google Maps', 'orbitkit-addons-for-elementor' ),
 				),
 			)
 		);
@@ -121,8 +121,8 @@ class Widget_Interactive_Map extends Widget_Base {
 					'<p class="elementor-panel-alert elementor-panel-alert-info">%s</p>',
 					sprintf(
 						/* translators: %s: settings page link */
-						esc_html__( 'Configure the Google Maps API key under %s → Integrations.', 'rocketkit-addons-for-elementor' ),
-						'<a href="' . esc_url( admin_url( 'admin.php?page=rocketkit-elementor' ) ) . '" target="_blank">RocketKit Addons</a>'
+						esc_html__( 'Configure the Google Maps API key under %s → Integrations.', 'orbitkit-addons-for-elementor' ),
+						'<a href="' . esc_url( admin_url( 'admin.php?page=orbitkit-elementor' ) ) . '" target="_blank">OrbitKit Addons</a>'
 					)
 				),
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
@@ -133,13 +133,13 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'display_mode',
 			array(
-				'label'   => esc_html__( 'Display mode', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Display mode', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'regions',
 				'options' => array(
-					'markers'  => esc_html__( 'Markers', 'rocketkit-addons-for-elementor' ),
-					'heatmap'  => esc_html__( 'Heatmap', 'rocketkit-addons-for-elementor' ),
-					'regions'  => esc_html__( 'Regions (hover highlight)', 'rocketkit-addons-for-elementor' ),
+					'markers'  => esc_html__( 'Markers', 'orbitkit-addons-for-elementor' ),
+					'heatmap'  => esc_html__( 'Heatmap', 'orbitkit-addons-for-elementor' ),
+					'regions'  => esc_html__( 'Regions (hover highlight)', 'orbitkit-addons-for-elementor' ),
 				),
 			)
 		);
@@ -147,7 +147,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'center_lat',
 			array(
-				'label'   => esc_html__( 'Center latitude', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Center latitude', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => -14.235,
 				'step'    => 0.0001,
@@ -157,7 +157,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'center_lng',
 			array(
-				'label'   => esc_html__( 'Center longitude', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Center longitude', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => -51.9253,
 				'step'    => 0.0001,
@@ -167,7 +167,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'zoom',
 			array(
-				'label'   => esc_html__( 'Zoom', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Zoom', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SLIDER,
 				'range'   => array(
 					'px' => array(
@@ -183,20 +183,20 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'scroll_wheel_zoom',
 			array(
-				'label'        => esc_html__( 'Mouse wheel zoom', 'rocketkit-addons-for-elementor' ),
+				'label'        => esc_html__( 'Mouse wheel zoom', 'orbitkit-addons-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'rocketkit-addons-for-elementor' ),
-				'label_off'    => esc_html__( 'No', 'rocketkit-addons-for-elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'orbitkit-addons-for-elementor' ),
+				'label_off'    => esc_html__( 'No', 'orbitkit-addons-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
-				'description'  => esc_html__( 'Scroll over the map to zoom in or out.', 'rocketkit-addons-for-elementor' ),
+				'description'  => esc_html__( 'Scroll over the map to zoom in or out.', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'map_height',
 			array(
-				'label'   => esc_html__( 'Height (px)', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Height (px)', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SLIDER,
 				'range'   => array(
 					'px' => array(
@@ -212,13 +212,13 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'tile_style',
 			array(
-				'label'     => esc_html__( 'Map style (Leaflet)', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Map style (Leaflet)', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'osm',
 				'options'   => array(
-					'osm'   => esc_html__( 'OpenStreetMap', 'rocketkit-addons-for-elementor' ),
-					'light' => esc_html__( 'Carto Light', 'rocketkit-addons-for-elementor' ),
-					'dark'  => esc_html__( 'Carto Dark', 'rocketkit-addons-for-elementor' ),
+					'osm'   => esc_html__( 'OpenStreetMap', 'orbitkit-addons-for-elementor' ),
+					'light' => esc_html__( 'Carto Light', 'orbitkit-addons-for-elementor' ),
+					'dark'  => esc_html__( 'Carto Dark', 'orbitkit-addons-for-elementor' ),
 				),
 				'condition' => array(
 					'map_provider'  => 'leaflet',
@@ -230,12 +230,12 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'tile_style_heatmap',
 			array(
-				'label'     => esc_html__( 'Map style (Leaflet)', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Map style (Leaflet)', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'light',
 				'options'   => array(
-					'light' => esc_html__( 'Carto Light', 'rocketkit-addons-for-elementor' ),
-					'dark'  => esc_html__( 'Carto Dark', 'rocketkit-addons-for-elementor' ),
+					'light' => esc_html__( 'Carto Light', 'orbitkit-addons-for-elementor' ),
+					'dark'  => esc_html__( 'Carto Dark', 'orbitkit-addons-for-elementor' ),
 				),
 				'condition' => array(
 					'map_provider' => 'leaflet',
@@ -250,11 +250,11 @@ class Widget_Interactive_Map extends Widget_Base {
 		$marker_repeater->add_control(
 			'marker_place_search',
 			array(
-				'label'       => esc_html__( 'Search location', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Search location', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'City, address or place…', 'rocketkit-addons-for-elementor' ),
+				'placeholder' => esc_html__( 'City, address or place…', 'orbitkit-addons-for-elementor' ),
 				'label_block' => true,
-				'description' => esc_html__( 'After 5 characters, choose a suggestion to set coordinates automatically.', 'rocketkit-addons-for-elementor' ),
+				'description' => esc_html__( 'After 5 characters, choose a suggestion to set coordinates automatically.', 'orbitkit-addons-for-elementor' ),
 				'condition'   => array( 'map_provider' => 'google' ),
 			)
 		);
@@ -262,7 +262,7 @@ class Widget_Interactive_Map extends Widget_Base {
 			'marker_geocode_status',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => '<p class="elementor-control-field-description rocketkit-marker-geocode-status" aria-live="polite"></p>',
+				'raw'             => '<p class="elementor-control-field-description orbitkit-marker-geocode-status" aria-live="polite"></p>',
 				'content_classes' => 'elementor-descriptor',
 				'condition'       => array( 'map_provider' => 'google' ),
 			)
@@ -271,7 +271,7 @@ class Widget_Interactive_Map extends Widget_Base {
 			'marker_coords_heading_google',
 			array(
 				'type'      => Controls_Manager::RAW_HTML,
-				'raw'       => '<p class="elementor-control-field-description" style="margin:12px 0 4px;font-weight:600;">' . esc_html__( 'Coordinates (manual)', 'rocketkit-addons-for-elementor' ) . '</p>',
+				'raw'       => '<p class="elementor-control-field-description" style="margin:12px 0 4px;font-weight:600;">' . esc_html__( 'Coordinates (manual)', 'orbitkit-addons-for-elementor' ) . '</p>',
 				'condition' => array( 'map_provider' => 'google' ),
 			)
 		);
@@ -279,14 +279,14 @@ class Widget_Interactive_Map extends Widget_Base {
 			'marker_coords_heading_leaflet',
 			array(
 				'type'      => Controls_Manager::RAW_HTML,
-				'raw'       => '<p class="elementor-control-field-description" style="margin:0 0 4px;font-weight:600;">' . esc_html__( 'Coordinates', 'rocketkit-addons-for-elementor' ) . '</p>',
+				'raw'       => '<p class="elementor-control-field-description" style="margin:0 0 4px;font-weight:600;">' . esc_html__( 'Coordinates', 'orbitkit-addons-for-elementor' ) . '</p>',
 				'condition' => array( 'map_provider' => 'leaflet' ),
 			)
 		);
 		$marker_repeater->add_control(
 			'marker_lat',
 			array(
-				'label'   => esc_html__( 'Latitude', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Latitude', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => -23.5505,
 				'step'    => 0.0001,
@@ -295,7 +295,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$marker_repeater->add_control(
 			'marker_lng',
 			array(
-				'label'   => esc_html__( 'Longitude', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Longitude', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => -46.6333,
 				'step'    => 0.0001,
@@ -304,25 +304,25 @@ class Widget_Interactive_Map extends Widget_Base {
 		$marker_repeater->add_control(
 			'marker_title',
 			array(
-				'label'   => esc_html__( 'Title', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Title', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Location', 'rocketkit-addons-for-elementor' ),
+				'default' => esc_html__( 'Location', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 		$marker_repeater->add_control(
 			'marker_description',
 			array(
-				'label'       => esc_html__( 'Description', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Description', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'rows'        => 4,
-				'description' => esc_html__( 'Line breaks are shown in the map popup.', 'rocketkit-addons-for-elementor' ),
+				'description' => esc_html__( 'Line breaks are shown in the map popup.', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->start_controls_section(
 			'section_marker_settings',
 			array(
-				'label'     => esc_html__( 'Marker settings', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Marker settings', 'orbitkit-addons-for-elementor' ),
 				'condition' => array( 'display_mode' => 'markers' ),
 			)
 		);
@@ -330,13 +330,13 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_icon_type',
 			array(
-				'label'   => esc_html__( 'Marker type', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Marker type', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => array(
-					'default' => esc_html__( 'Map default', 'rocketkit-addons-for-elementor' ),
-					'preset'  => esc_html__( 'Preset shapes', 'rocketkit-addons-for-elementor' ),
-					'custom'  => esc_html__( 'Custom icon / SVG', 'rocketkit-addons-for-elementor' ),
+					'default' => esc_html__( 'Map default', 'orbitkit-addons-for-elementor' ),
+					'preset'  => esc_html__( 'Preset shapes', 'orbitkit-addons-for-elementor' ),
+					'custom'  => esc_html__( 'Custom icon / SVG', 'orbitkit-addons-for-elementor' ),
 				),
 			)
 		);
@@ -344,7 +344,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_color',
 			array(
-				'label'     => esc_html__( 'Marker color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Marker color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#03a84e',
 				'condition' => array( 'marker_icon_type' => 'preset' ),
@@ -354,14 +354,14 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_shape',
 			array(
-				'label'     => esc_html__( 'Marker shape', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Marker shape', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'default' => 'pin',
 				'options'   => array(
-					'pin'     => esc_html__( 'Pin', 'rocketkit-addons-for-elementor' ),
-					'circle'  => esc_html__( 'Circle', 'rocketkit-addons-for-elementor' ),
-					'square'  => esc_html__( 'Square', 'rocketkit-addons-for-elementor' ),
-					'diamond' => esc_html__( 'Diamond', 'rocketkit-addons-for-elementor' ),
+					'pin'     => esc_html__( 'Pin', 'orbitkit-addons-for-elementor' ),
+					'circle'  => esc_html__( 'Circle', 'orbitkit-addons-for-elementor' ),
+					'square'  => esc_html__( 'Square', 'orbitkit-addons-for-elementor' ),
+					'diamond' => esc_html__( 'Diamond', 'orbitkit-addons-for-elementor' ),
 				),
 				'condition' => array( 'marker_icon_type' => 'preset' ),
 			)
@@ -370,7 +370,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_size',
 			array(
-				'label'      => esc_html__( 'Marker size', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Marker size', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -391,9 +391,9 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_custom_image',
 			array(
-				'label'       => esc_html__( 'Icon image', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Icon image', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::MEDIA,
-				'description' => esc_html__( 'PNG, JPG, GIF or SVG from the media library.', 'rocketkit-addons-for-elementor' ),
+				'description' => esc_html__( 'PNG, JPG, GIF or SVG from the media library.', 'orbitkit-addons-for-elementor' ),
 				'condition'   => array( 'marker_icon_type' => 'custom' ),
 			)
 		);
@@ -401,10 +401,10 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_custom_svg',
 			array(
-				'label'       => esc_html__( 'Inline SVG code', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Inline SVG code', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'rows'        => 6,
-				'description' => esc_html__( 'Optional. Paste SVG markup (overrides the image above when filled).', 'rocketkit-addons-for-elementor' ),
+				'description' => esc_html__( 'Optional. Paste SVG markup (overrides the image above when filled).', 'orbitkit-addons-for-elementor' ),
 				'condition'   => array( 'marker_icon_type' => 'custom' ),
 			)
 		);
@@ -412,7 +412,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_custom_width',
 			array(
-				'label'      => esc_html__( 'Icon width', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Icon width', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -433,7 +433,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'marker_custom_height',
 			array(
-				'label'      => esc_html__( 'Icon height', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Icon height', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -456,7 +456,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->start_controls_section(
 			'section_markers',
 			array(
-				'label'     => esc_html__( 'Markers', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Markers', 'orbitkit-addons-for-elementor' ),
 				'condition' => array( 'display_mode' => 'markers' ),
 			)
 		);
@@ -464,7 +464,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'markers',
 			array(
-				'label'       => esc_html__( 'Marker list', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Marker list', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $marker_repeater->get_controls(),
 				'default'     => array(
@@ -484,16 +484,16 @@ class Widget_Interactive_Map extends Widget_Base {
 		$heat_repeater->add_control(
 			'heat_label',
 			array(
-				'label'       => esc_html__( 'Point name', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Point name', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Point', 'rocketkit-addons-for-elementor' ),
+				'default'     => esc_html__( 'Point', 'orbitkit-addons-for-elementor' ),
 				'label_block' => true,
 			)
 		);
 		$heat_repeater->add_control(
 			'heat_lat',
 			array(
-				'label'   => esc_html__( 'Latitude', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Latitude', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => -23.55,
 				'step'    => 0.0001,
@@ -502,7 +502,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$heat_repeater->add_control(
 			'heat_lng',
 			array(
-				'label'   => esc_html__( 'Longitude', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Longitude', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => -46.63,
 				'step'    => 0.0001,
@@ -511,7 +511,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$heat_repeater->add_control(
 			'heat_intensity',
 			array(
-				'label'   => esc_html__( 'Intensity', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Intensity', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SLIDER,
 				'range'   => array(
 					'px' => array(
@@ -527,7 +527,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->start_controls_section(
 			'section_heatmap',
 			array(
-				'label'     => esc_html__( 'Heatmap points', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Heatmap points', 'orbitkit-addons-for-elementor' ),
 				'condition' => array( 'display_mode' => 'heatmap' ),
 			)
 		);
@@ -535,7 +535,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'heat_radius',
 			array(
-				'label'   => esc_html__( 'Point radius', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Point radius', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SLIDER,
 				'range'   => array(
 					'px' => array(
@@ -551,7 +551,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'heatmap_points',
 			array(
-				'label'       => esc_html__( 'Points', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Points', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $heat_repeater->get_controls(),
 				'default'     => array(
@@ -581,20 +581,20 @@ class Widget_Interactive_Map extends Widget_Base {
 		$region_repeater->add_control(
 			'region_label',
 			array(
-				'label'       => esc_html__( 'Label', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Label', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Region', 'rocketkit-addons-for-elementor' ),
+				'default'     => esc_html__( 'Region', 'orbitkit-addons-for-elementor' ),
 				'label_block' => true,
-				'description' => esc_html__( 'Shown in the list and as the region title on hover.', 'rocketkit-addons-for-elementor' ),
+				'description' => esc_html__( 'Shown in the list and as the region title on hover.', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 		$region_repeater->add_control(
 			'region_description',
 			array(
-				'label'       => esc_html__( 'Description', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Description', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'rows'        => 4,
-				'description' => esc_html__( 'Shown on hover over the highlighted area. Line breaks are preserved.', 'rocketkit-addons-for-elementor' ),
+				'description' => esc_html__( 'Shown on hover over the highlighted area. Line breaks are preserved.', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 		$region_repeater->add_control(
@@ -602,9 +602,9 @@ class Widget_Interactive_Map extends Widget_Base {
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
 				'raw'             => sprintf(
-					'<div class="rocketkit-region-geojson-io"><p class="elementor-control-field-description">%s</p><a href="https://geojson.io/" target="_blank" rel="noopener noreferrer" class="elementor-button elementor-button-default">%s</a></div>',
-					esc_html__( 'Draw your area on GeoJSON.io, then copy the JSON and paste it in the field below.', 'rocketkit-addons-for-elementor' ),
-					esc_html__( 'Open GeoJSON.io', 'rocketkit-addons-for-elementor' )
+					'<div class="orbitkit-region-geojson-io"><p class="elementor-control-field-description">%s</p><a href="https://geojson.io/" target="_blank" rel="noopener noreferrer" class="elementor-button elementor-button-default">%s</a></div>',
+					esc_html__( 'Draw your area on GeoJSON.io, then copy the JSON and paste it in the field below.', 'orbitkit-addons-for-elementor' ),
+					esc_html__( 'Open GeoJSON.io', 'orbitkit-addons-for-elementor' )
 				),
 				'content_classes' => 'elementor-descriptor',
 			)
@@ -612,16 +612,16 @@ class Widget_Interactive_Map extends Widget_Base {
 		$region_repeater->add_control(
 			'region_custom_geojson',
 			array(
-				'label'       => esc_html__( 'Area (GeoJSON)', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Area (GeoJSON)', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'rows'        => 6,
-				'description' => esc_html__( 'Paste a GeoJSON Feature, FeatureCollection, or Polygon from GeoJSON.io.', 'rocketkit-addons-for-elementor' ),
+				'description' => esc_html__( 'Paste a GeoJSON Feature, FeatureCollection, or Polygon from GeoJSON.io.', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 		$region_repeater->add_control(
 			'region_color',
 			array(
-				'label'   => esc_html__( 'Fill color', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Fill color', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::COLOR,
 				'default' => '#3388ff',
 			)
@@ -629,7 +629,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$region_repeater->add_control(
 			'region_fill_opacity',
 			array(
-				'label'      => esc_html__( 'Fill opacity', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Fill opacity', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%' ),
 				'range'      => array(
@@ -648,7 +648,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$region_repeater->add_control(
 			'region_hover_border_color',
 			array(
-				'label'   => esc_html__( 'Hover border color', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Hover border color', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::COLOR,
 				'default' => '#ff6b35',
 			)
@@ -656,11 +656,11 @@ class Widget_Interactive_Map extends Widget_Base {
 		$region_repeater->add_control(
 			'region_hover_fill',
 			array(
-				'label'        => esc_html__( 'Fill on hover', 'rocketkit-addons-for-elementor' ),
-				'description'  => esc_html__( 'Solid fill on hover covers thin gaps between polygon borders.', 'rocketkit-addons-for-elementor' ),
+				'label'        => esc_html__( 'Fill on hover', 'orbitkit-addons-for-elementor' ),
+				'description'  => esc_html__( 'Solid fill on hover covers thin gaps between polygon borders.', 'orbitkit-addons-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'rocketkit-addons-for-elementor' ),
-				'label_off'    => esc_html__( 'No', 'rocketkit-addons-for-elementor' ),
+				'label_on'     => esc_html__( 'Yes', 'orbitkit-addons-for-elementor' ),
+				'label_off'    => esc_html__( 'No', 'orbitkit-addons-for-elementor' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -668,7 +668,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$region_repeater->add_control(
 			'region_hover_fill_color',
 			array(
-				'label'     => esc_html__( 'Hover fill color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Hover fill color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ff6b35',
 				'condition' => array( 'region_hover_fill' => 'yes' ),
@@ -677,7 +677,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$region_repeater->add_control(
 			'region_hover_fill_opacity',
 			array(
-				'label'      => esc_html__( 'Hover fill opacity', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Hover fill opacity', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%' ),
 				'range'      => array(
@@ -698,7 +698,7 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->start_controls_section(
 			'section_regions',
 			array(
-				'label'     => esc_html__( 'Regions', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Regions', 'orbitkit-addons-for-elementor' ),
 				'condition' => array( 'display_mode' => 'regions' ),
 			)
 		);
@@ -706,12 +706,12 @@ class Widget_Interactive_Map extends Widget_Base {
 		$this->add_control(
 			'regions',
 			array(
-				'label'       => esc_html__( 'Region list', 'rocketkit-addons-for-elementor' ),
+				'label'       => esc_html__( 'Region list', 'orbitkit-addons-for-elementor' ),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $region_repeater->get_controls(),
 				'default'     => array(
 					array(
-						'region_label'            => esc_html__( 'Region 1', 'rocketkit-addons-for-elementor' ),
+						'region_label'            => esc_html__( 'Region 1', 'orbitkit-addons-for-elementor' ),
 						'region_description'      => '',
 						'region_color'            => '#4a90d9',
 						'region_fill_opacity'     => array( 'size' => 45, 'unit' => '%' ),
@@ -729,14 +729,14 @@ class Widget_Interactive_Map extends Widget_Base {
 
 		$this->register_box_style_controls(
 			'style_map_wrapper',
-			esc_html__( 'Map container', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-map-widget'
+			esc_html__( 'Map container', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-map-widget'
 		);
 
 		$this->register_box_style_controls(
 			'style_map_canvas',
-			esc_html__( 'Map canvas', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-map-canvas'
+			esc_html__( 'Map canvas', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-map-canvas'
 		);
 
 		$this->register_marker_popup_style_controls();
@@ -846,7 +846,7 @@ class Widget_Interactive_Map extends Widget_Base {
 					: $hover_border;
 
 				$regions[] = array(
-					'label'              => ! empty( $region['region_label'] ) ? $region['region_label'] : esc_html__( 'Region', 'rocketkit-addons-for-elementor' ),
+					'label'              => ! empty( $region['region_label'] ) ? $region['region_label'] : esc_html__( 'Region', 'orbitkit-addons-for-elementor' ),
 					'description'        => isset( $region['region_description'] ) ? $region['region_description'] : '',
 					'geojson'            => $feature,
 					'color'              => isset( $region['region_color'] ) ? $region['region_color'] : '#3388ff',
@@ -925,7 +925,7 @@ class Widget_Interactive_Map extends Widget_Base {
 			}
 
 			$svg_markup = isset( $settings['marker_custom_svg'] )
-				? RocketKit_Sanitizer::sanitize_inline_svg( $settings['marker_custom_svg'] )
+				? OrbitKit_Sanitizer::sanitize_inline_svg( $settings['marker_custom_svg'] )
 				: '';
 
 			return array(
@@ -949,34 +949,34 @@ class Widget_Interactive_Map extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		$config   = $this->build_map_config( $settings );
 
-		$google_api_key = RocketKit_Elementor_Settings::get_google_maps_api_key();
+		$google_api_key = OrbitKit_Elementor_Settings::get_google_maps_api_key();
 		if ( 'google' === $config['provider'] && '' !== $google_api_key ) {
 			$key = rawurlencode( $google_api_key );
-			if ( ! wp_script_is( 'google-maps-rocketkit', 'registered' ) ) {
+			if ( ! wp_script_is( 'google-maps-orbitkit', 'registered' ) ) {
 				wp_register_script(
-					'google-maps-rocketkit',
+					'google-maps-orbitkit',
 					'https://maps.googleapis.com/maps/api/js?key=' . $key . '&libraries=visualization',
 					array(),
-					ROCKETKIT_ELEMENTOR_VERSION,
+					ORBITKIT_ELEMENTOR_VERSION,
 					true
 				);
 			}
-			wp_enqueue_script( 'google-maps-rocketkit' );
+			wp_enqueue_script( 'google-maps-orbitkit' );
 		}
 
-		$id          = 'rocketkit-map-' . $this->get_id();
+		$id          = 'orbitkit-map-' . $this->get_id();
 		$config_json = wp_json_encode(
 			$config,
 			JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
 		);
 		?>
-		<div class="rocketkit-map-widget" id="<?php echo esc_attr( $id ); ?>">
+		<div class="orbitkit-map-widget" id="<?php echo esc_attr( $id ); ?>">
 			<div
-				class="rocketkit-map-canvas"
+				class="orbitkit-map-canvas"
 				data-config="<?php echo esc_attr( $config_json ); ?>"
 				style="height: <?php echo esc_attr( (string) $config['height'] ); ?>px;"
 				role="region"
-				aria-label="<?php esc_attr_e( 'Interactive map', 'rocketkit-addons-for-elementor' ); ?>"
+				aria-label="<?php esc_attr_e( 'Interactive map', 'orbitkit-addons-for-elementor' ); ?>"
 			></div>
 		</div>
 		<?php

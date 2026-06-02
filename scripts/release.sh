@@ -21,7 +21,7 @@ BUMP_PART=""
 
 usage() {
 	cat <<'EOF'
-Release helper for RocketKit Addons For Elementor.
+Release helper for OrbitKit Addons For Elementor.
 
 Examples:
   ./scripts/release.sh 1.5.0 "Image stack fixes and release tooling"
@@ -167,7 +167,7 @@ if [[ "${TAG_ONLY}" != true ]]; then
 	"${SYNC_SCRIPT}"
 	prepend_changelog "${NEW_VERSION}" "${CHANGELOG}"
 
-	git -C "${ROOT}" add VERSION rocketkit-elementor-addon.php readme.txt languages/
+	git -C "${ROOT}" add VERSION orbitkit-elementor-addon.php readme.txt languages/
 	git -C "${ROOT}" commit -m "chore(release): ${NEW_VERSION}"
 fi
 

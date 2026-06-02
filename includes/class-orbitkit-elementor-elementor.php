@@ -2,10 +2,10 @@
 /**
  * Elementor integration.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Includes;
+namespace OrbitKit\Elementor\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Registers category, widgets, and per-widget assets.
  */
-class RocketKit_Elementor_Elementor {
+class OrbitKit_Elementor_Elementor {
 
 	public function init() {
-		require_once ROCKETKIT_ELEMENTOR_PATH . 'includes/trait-widget-style-controls.php';
-		require_once ROCKETKIT_ELEMENTOR_PATH . 'includes/trait-widget-base.php';
+		require_once ORBITKIT_ELEMENTOR_PATH . 'includes/trait-widget-style-controls.php';
+		require_once ORBITKIT_ELEMENTOR_PATH . 'includes/trait-widget-base.php';
 
 		$this->load_widget_files();
 
@@ -27,17 +27,64 @@ class RocketKit_Elementor_Elementor {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
 		add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'register_assets' ) );
 		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ) );
+
+		add_filter( 'elementor/frontend/builder_content_data', array( $this, 'migrate_legacy_elementor_data' ) );
+		add_filter( 'elementor/document/save/data', array( $this, 'migrate_legacy_elementor_data' ) );
+	}
+
+	/**
+	 * Map RocketKit widget type IDs saved in Elementor JSON to OrbitKit IDs.
+	 *
+	 * @return array<string, string>
+	 */
+	private static function get_legacy_widget_type_map() {
+		return array(
+			'rocketkit_interactive_map' => 'orbitkit_interactive_map',
+			'rocketkit_pricing_table'   => 'orbitkit_pricing_table',
+			'rocketkit_team_member'     => 'orbitkit_team_member',
+			'rocketkit_countdown'       => 'orbitkit_countdown',
+			'rocketkit_image_compare'   => 'orbitkit_image_compare',
+			'rocketkit_image_stack'     => 'orbitkit_image_stack',
+		);
+	}
+
+	/**
+	 * @param array<int, array<string, mixed>>|mixed $data Elementor document elements.
+	 * @return array<int, array<string, mixed>>|mixed
+	 */
+	public function migrate_legacy_elementor_data( $data ) {
+		if ( ! is_array( $data ) ) {
+			return $data;
+		}
+
+		$map = self::get_legacy_widget_type_map();
+
+		foreach ( $data as $index => $element ) {
+			if ( ! is_array( $element ) ) {
+				continue;
+			}
+
+			if ( isset( $element['widgetType'], $map[ $element['widgetType'] ] ) ) {
+				$data[ $index ]['widgetType'] = $map[ $element['widgetType'] ];
+			}
+
+			if ( ! empty( $element['elements'] ) && is_array( $element['elements'] ) ) {
+				$data[ $index ]['elements'] = $this->migrate_legacy_elementor_data( $element['elements'] );
+			}
+		}
+
+		return $data;
 	}
 
 	/**
 	 * Load only enabled widget class files.
 	 */
 	private function load_widget_files() {
-		foreach ( RocketKit_Widget_Registry::get_widgets() as $slug => $widget ) {
-			if ( ! RocketKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
+		foreach ( OrbitKit_Widget_Registry::get_widgets() as $slug => $widget ) {
+			if ( ! OrbitKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
 				continue;
 			}
-			require_once ROCKETKIT_ELEMENTOR_PATH . $widget['file'];
+			require_once ORBITKIT_ELEMENTOR_PATH . $widget['file'];
 		}
 	}
 
@@ -46,8 +93,8 @@ class RocketKit_Elementor_Elementor {
 	 */
 	public function register_category( $elements_manager ) {
 		$has_active = false;
-		foreach ( RocketKit_Widget_Registry::get_widgets() as $slug => $widget ) {
-			if ( RocketKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
+		foreach ( OrbitKit_Widget_Registry::get_widgets() as $slug => $widget ) {
+			if ( OrbitKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
 				$has_active = true;
 				break;
 			}
@@ -58,9 +105,9 @@ class RocketKit_Elementor_Elementor {
 		}
 
 		$elements_manager->add_category(
-			'rocketkit',
+			'orbitkit',
 			array(
-				'title' => esc_html__( 'RocketKit', 'rocketkit-addons-for-elementor' ),
+				'title' => esc_html__( 'OrbitKit', 'orbitkit-addons-for-elementor' ),
 				'icon'  => 'eicon-kit-parts',
 			)
 		);
@@ -70,8 +117,8 @@ class RocketKit_Elementor_Elementor {
 	 * @param \Elementor\Widgets_Manager $widgets_manager Manager.
 	 */
 	public function register_widgets( $widgets_manager ) {
-		foreach ( RocketKit_Widget_Registry::get_widgets() as $slug => $widget ) {
-			if ( ! RocketKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
+		foreach ( OrbitKit_Widget_Registry::get_widgets() as $slug => $widget ) {
+			if ( ! OrbitKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
 				continue;
 			}
 			$class = $widget['class'];
@@ -85,65 +132,65 @@ class RocketKit_Elementor_Elementor {
 	 * Register CSS/JS only for enabled widgets.
 	 */
 	public function register_assets() {
-		$needs_leaflet = RocketKit_Elementor_Settings::is_widget_enabled( 'interactive_map' );
+		$needs_leaflet = OrbitKit_Elementor_Settings::is_widget_enabled( 'interactive_map' );
 
 		if ( $needs_leaflet ) {
-			$leaflet_base = ROCKETKIT_ELEMENTOR_URL . 'assets/vendor/leaflet/';
+			$leaflet_base = ORBITKIT_ELEMENTOR_URL . 'assets/vendor/leaflet/';
 			wp_register_style( 'leaflet', $leaflet_base . 'leaflet.css', array(), '1.9.4' );
 			wp_register_script( 'leaflet', $leaflet_base . 'leaflet.js', array(), '1.9.4', true );
 			wp_register_script( 'leaflet-heat', $leaflet_base . 'leaflet-heat.js', array( 'leaflet' ), '0.2.0', true );
 		}
 
-		foreach ( RocketKit_Widget_Registry::get_widgets() as $slug => $widget ) {
-			if ( ! RocketKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
+		foreach ( OrbitKit_Widget_Registry::get_widgets() as $slug => $widget ) {
+			if ( ! OrbitKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
 				continue;
 			}
 
 			if ( ! empty( $widget['style'] ) && ! empty( $widget['style_file'] ) ) {
 				wp_register_style(
 					$widget['style'],
-					ROCKETKIT_ELEMENTOR_URL . $widget['style_file'],
+					ORBITKIT_ELEMENTOR_URL . $widget['style_file'],
 					isset( $widget['style_deps'] ) ? $widget['style_deps'] : array(),
-					ROCKETKIT_ELEMENTOR_VERSION
+					ORBITKIT_ELEMENTOR_VERSION
 				);
 			}
 
 			if ( ! empty( $widget['script'] ) && ! empty( $widget['script_file'] ) ) {
 				wp_register_script(
 					$widget['script'],
-					ROCKETKIT_ELEMENTOR_URL . $widget['script_file'],
+					ORBITKIT_ELEMENTOR_URL . $widget['script_file'],
 					isset( $widget['script_deps'] ) ? $widget['script_deps'] : array(),
-					ROCKETKIT_ELEMENTOR_VERSION,
+					ORBITKIT_ELEMENTOR_VERSION,
 					true
 				);
 			}
 		}
 
-		if ( RocketKit_Elementor_Settings::is_widget_enabled( 'interactive_map' ) ) {
+		if ( OrbitKit_Elementor_Settings::is_widget_enabled( 'interactive_map' ) ) {
 			wp_register_style(
-				'rocketkit-widget-interactive-map-editor',
-				ROCKETKIT_ELEMENTOR_URL . 'assets/css/widget-interactive-map-editor.css',
+				'orbitkit-widget-interactive-map-editor',
+				ORBITKIT_ELEMENTOR_URL . 'assets/css/widget-interactive-map-editor.css',
 				array(),
-				ROCKETKIT_ELEMENTOR_VERSION
+				ORBITKIT_ELEMENTOR_VERSION
 			);
 
 			wp_register_script(
-				'rocketkit-widget-interactive-map-editor',
-				ROCKETKIT_ELEMENTOR_URL . 'assets/js/widget-interactive-map-editor.js',
+				'orbitkit-widget-interactive-map-editor',
+				ORBITKIT_ELEMENTOR_URL . 'assets/js/widget-interactive-map-editor.js',
 				array( 'jquery' ),
-				ROCKETKIT_ELEMENTOR_VERSION,
+				ORBITKIT_ELEMENTOR_VERSION,
 				true
 			);
 
 			wp_localize_script(
-				'rocketkit-widget-interactive-map-editor',
-				'rocketkitMapEditor',
+				'orbitkit-widget-interactive-map-editor',
+				'orbitkitMapEditor',
 				array(
-					'restUrl'    => rest_url( 'rocketkit/v1/geocode' ),
+					'restUrl'    => rest_url( 'orbitkit/v1/geocode' ),
 					'nonce'      => wp_create_nonce( 'wp_rest' ),
 					'minChars'   => 5,
 					'maxResults' => 3,
-					'i18n'       => RocketKit_Elementor_I18n::get_map_editor_script_strings(),
+					'i18n'       => OrbitKit_Elementor_I18n::get_map_editor_script_strings(),
 				)
 			);
 
@@ -155,7 +202,7 @@ class RocketKit_Elementor_Elementor {
 	 */
 	public function register_rest_routes() {
 		register_rest_route(
-			'rocketkit/v1',
+			'orbitkit/v1',
 			'/geocode',
 			array(
 				'methods'             => 'GET',
@@ -198,16 +245,16 @@ class RocketKit_Elementor_Elementor {
 
 		if ( '' === $query ) {
 			return new \WP_Error(
-				'rocketkit_empty_query',
-				__( 'Search query is empty.', 'rocketkit-addons-for-elementor' ),
+				'orbitkit_empty_query',
+				__( 'Search query is empty.', 'orbitkit-addons-for-elementor' ),
 				array( 'status' => 400 )
 			);
 		}
 
 		if ( mb_strlen( $query ) < 5 ) {
 			return new \WP_Error(
-				'rocketkit_query_too_short',
-				__( 'Query must be at least 5 characters.', 'rocketkit-addons-for-elementor' ),
+				'orbitkit_query_too_short',
+				__( 'Query must be at least 5 characters.', 'orbitkit-addons-for-elementor' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -227,7 +274,7 @@ class RocketKit_Elementor_Elementor {
 			array(
 				'timeout' => 15,
 				'headers' => array(
-					'User-Agent' => 'RocketKit-Elementor-Addon/' . ROCKETKIT_ELEMENTOR_VERSION . ' (' . home_url() . ')',
+					'User-Agent' => 'OrbitKit-Elementor-Addon/' . ORBITKIT_ELEMENTOR_VERSION . ' (' . home_url() . ')',
 				),
 			)
 		);
@@ -239,8 +286,8 @@ class RocketKit_Elementor_Elementor {
 		$code = wp_remote_retrieve_response_code( $response );
 		if ( 200 !== $code ) {
 			return new \WP_Error(
-				'rocketkit_geocode_failed',
-				__( 'Geocoding service unavailable.', 'rocketkit-addons-for-elementor' ),
+				'orbitkit_geocode_failed',
+				__( 'Geocoding service unavailable.', 'orbitkit-addons-for-elementor' ),
 				array( 'status' => 502 )
 			);
 		}
@@ -248,8 +295,8 @@ class RocketKit_Elementor_Elementor {
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
 		if ( ! is_array( $body ) || empty( $body ) ) {
 			return new \WP_Error(
-				'rocketkit_geocode_not_found',
-				__( 'Location not found.', 'rocketkit-addons-for-elementor' ),
+				'orbitkit_geocode_not_found',
+				__( 'Location not found.', 'orbitkit-addons-for-elementor' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -268,8 +315,8 @@ class RocketKit_Elementor_Elementor {
 
 		if ( empty( $results ) ) {
 			return new \WP_Error(
-				'rocketkit_geocode_not_found',
-				__( 'Location not found.', 'rocketkit-addons-for-elementor' ),
+				'orbitkit_geocode_not_found',
+				__( 'Location not found.', 'orbitkit-addons-for-elementor' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -288,7 +335,7 @@ class RocketKit_Elementor_Elementor {
 	 */
 	public static function meets_minimum_elementor_version() {
 		return defined( 'ELEMENTOR_VERSION' )
-			&& version_compare( ELEMENTOR_VERSION, ROCKETKIT_ELEMENTOR_MIN_ELEMENTOR, '>=' );
+			&& version_compare( ELEMENTOR_VERSION, ORBITKIT_ELEMENTOR_MIN_ELEMENTOR, '>=' );
 	}
 
 	/**
@@ -299,7 +346,7 @@ class RocketKit_Elementor_Elementor {
 			return;
 		}
 		echo '<div class="notice notice-warning"><p>';
-		esc_html_e( 'RocketKit Addons For Elementor requires Elementor to be installed and active.', 'rocketkit-addons-for-elementor' );
+		esc_html_e( 'OrbitKit Addons For Elementor requires Elementor to be installed and active.', 'orbitkit-addons-for-elementor' );
 		echo '</p></div>';
 	}
 
@@ -313,8 +360,8 @@ class RocketKit_Elementor_Elementor {
 		echo '<div class="notice notice-warning"><p>';
 		printf(
 			/* translators: %s: minimum Elementor version number */
-			esc_html__( 'RocketKit Addons For Elementor requires Elementor version %s or newer.', 'rocketkit-addons-for-elementor' ),
-			esc_html( ROCKETKIT_ELEMENTOR_MIN_ELEMENTOR )
+			esc_html__( 'OrbitKit Addons For Elementor requires Elementor version %s or newer.', 'orbitkit-addons-for-elementor' ),
+			esc_html( ORBITKIT_ELEMENTOR_MIN_ELEMENTOR )
 		);
 		echo '</p></div>';
 	}

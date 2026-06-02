@@ -2,10 +2,10 @@
 /**
  * Image Compare Elementor widget.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Widgets;
+namespace OrbitKit\Elementor\Widgets;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -15,15 +15,15 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Utils;
 use Elementor\Widget_Base;
-use RocketKit\Elementor\Includes\Traits\Widget_Base as RocketKit_Widget_Base;
-use RocketKit\Elementor\Includes\Traits\Widget_Style_Controls;
+use OrbitKit\Elementor\Includes\Traits\Widget_Base as OrbitKit_Widget_Base;
+use OrbitKit\Elementor\Includes\Traits\Widget_Style_Controls;
 
 /**
  * Before / after image comparison slider.
  */
 class Widget_Image_Compare extends Widget_Base {
 
-	use RocketKit_Widget_Base;
+	use OrbitKit_Widget_Base;
 	use Widget_Style_Controls;
 
 	/**
@@ -34,11 +34,11 @@ class Widget_Image_Compare extends Widget_Base {
 	}
 
 	public function get_name() {
-		return 'rocketkit_image_compare';
+		return 'orbitkit_image_compare';
 	}
 
 	public function get_title() {
-		return esc_html__( 'Image Compare', 'rocketkit-addons-for-elementor' );
+		return esc_html__( 'Image Compare', 'orbitkit-addons-for-elementor' );
 	}
 
 	public function get_icon() {
@@ -46,25 +46,25 @@ class Widget_Image_Compare extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return array( 'rocketkit' );
+		return array( 'orbitkit' );
 	}
 
 	public function get_keywords() {
-		return array( 'before', 'after', 'compare', 'slider', 'image', 'rocketkit' );
+		return array( 'before', 'after', 'compare', 'slider', 'image', 'orbitkit' );
 	}
 
 	protected function register_controls() {
 		$this->start_controls_section(
 			'section_images',
 			array(
-				'label' => esc_html__( 'Images', 'rocketkit-addons-for-elementor' ),
+				'label' => esc_html__( 'Images', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'image_before',
 			array(
-				'label'   => esc_html__( 'Before image', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Before image', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::MEDIA,
 				'default' => array(
 					'url' => Utils::get_placeholder_image_src(),
@@ -75,7 +75,7 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'image_after',
 			array(
-				'label'   => esc_html__( 'After image', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'After image', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::MEDIA,
 				'default' => array(
 					'url' => Utils::get_placeholder_image_src(),
@@ -96,19 +96,19 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->start_controls_section(
 			'section_compare',
 			array(
-				'label' => esc_html__( 'Compare', 'rocketkit-addons-for-elementor' ),
+				'label' => esc_html__( 'Compare', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'orientation',
 			array(
-				'label'   => esc_html__( 'Orientation', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Orientation', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'horizontal',
 				'options' => array(
-					'horizontal' => esc_html__( 'Horizontal', 'rocketkit-addons-for-elementor' ),
-					'vertical'   => esc_html__( 'Vertical', 'rocketkit-addons-for-elementor' ),
+					'horizontal' => esc_html__( 'Horizontal', 'orbitkit-addons-for-elementor' ),
+					'vertical'   => esc_html__( 'Vertical', 'orbitkit-addons-for-elementor' ),
 				),
 			)
 		);
@@ -116,7 +116,7 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'start_position',
 			array(
-				'label'      => esc_html__( 'Starting position', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Starting position', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( '%' ),
 				'range'      => array(
@@ -135,13 +135,13 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'handler_style',
 			array(
-				'label'   => esc_html__( 'Handler style', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Handler style', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => array(
-					'default' => esc_html__( 'Circle', 'rocketkit-addons-for-elementor' ),
-					'thin'    => esc_html__( 'Thin line', 'rocketkit-addons-for-elementor' ),
-					'capsule' => esc_html__( 'Capsule', 'rocketkit-addons-for-elementor' ),
+					'default' => esc_html__( 'Circle', 'orbitkit-addons-for-elementor' ),
+					'thin'    => esc_html__( 'Thin line', 'orbitkit-addons-for-elementor' ),
+					'capsule' => esc_html__( 'Capsule', 'orbitkit-addons-for-elementor' ),
 				),
 			)
 		);
@@ -149,7 +149,7 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'move_on_hover',
 			array(
-				'label'        => esc_html__( 'Move on hover', 'rocketkit-addons-for-elementor' ),
+				'label'        => esc_html__( 'Move on hover', 'orbitkit-addons-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'default'      => '',
@@ -159,7 +159,7 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'show_labels',
 			array(
-				'label'        => esc_html__( 'Show labels', 'rocketkit-addons-for-elementor' ),
+				'label'        => esc_html__( 'Show labels', 'orbitkit-addons-for-elementor' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'default'      => 'yes',
@@ -169,9 +169,9 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'label_before',
 			array(
-				'label'     => esc_html__( 'Before label', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Before label', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => esc_html__( 'Before', 'rocketkit-addons-for-elementor' ),
+				'default'   => esc_html__( 'Before', 'orbitkit-addons-for-elementor' ),
 				'condition' => array( 'show_labels' => 'yes' ),
 			)
 		);
@@ -179,9 +179,9 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'label_after',
 			array(
-				'label'     => esc_html__( 'After label', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'After label', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => esc_html__( 'After', 'rocketkit-addons-for-elementor' ),
+				'default'   => esc_html__( 'After', 'orbitkit-addons-for-elementor' ),
 				'condition' => array( 'show_labels' => 'yes' ),
 			)
 		);
@@ -190,14 +190,14 @@ class Widget_Image_Compare extends Widget_Base {
 
 		$this->register_box_style_controls(
 			'style_compare_wrapper',
-			esc_html__( 'Wrapper', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-image-compare'
+			esc_html__( 'Wrapper', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-image-compare'
 		);
 
 		$this->start_controls_section(
 			'style_compare_handler',
 			array(
-				'label' => esc_html__( 'Handler', 'rocketkit-addons-for-elementor' ),
+				'label' => esc_html__( 'Handler', 'orbitkit-addons-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -205,13 +205,13 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'handler_color',
 			array(
-				'label'     => esc_html__( 'Color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .rocketkit-image-compare__handle' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
-					'{{WRAPPER}} .rocketkit-image-compare--handler-thin .rocketkit-image-compare__handle-line' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .rocketkit-image-compare__handle-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .orbitkit-image-compare__handle' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+					'{{WRAPPER}} .orbitkit-image-compare--handler-thin .orbitkit-image-compare__handle-line' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .orbitkit-image-compare__handle-icon' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -219,12 +219,12 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'handler_accent',
 			array(
-				'label'     => esc_html__( 'Accent / icon', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Accent / icon', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#03a84e',
 				'selectors' => array(
-					'{{WRAPPER}} .rocketkit-image-compare--handler-default .rocketkit-image-compare__handle' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .rocketkit-image-compare--handler-capsule .rocketkit-image-compare__handle' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
+					'{{WRAPPER}} .orbitkit-image-compare--handler-default .orbitkit-image-compare__handle' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .orbitkit-image-compare--handler-capsule .orbitkit-image-compare__handle' => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -233,14 +233,14 @@ class Widget_Image_Compare extends Widget_Base {
 
 		$this->register_typography_style_controls(
 			'style_compare_labels',
-			esc_html__( 'Labels', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-image-compare__label'
+			esc_html__( 'Labels', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-image-compare__label'
 		);
 
 		$this->start_controls_section(
 			'style_compare_label_box',
 			array(
-				'label' => esc_html__( 'Label box', 'rocketkit-addons-for-elementor' ),
+				'label' => esc_html__( 'Label box', 'orbitkit-addons-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -248,11 +248,11 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_control(
 			'label_bg',
 			array(
-				'label'     => esc_html__( 'Background', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Background', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'rgba(0,0,0,0.55)',
 				'selectors' => array(
-					'{{WRAPPER}} .rocketkit-image-compare__label' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .orbitkit-image-compare__label' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -260,11 +260,11 @@ class Widget_Image_Compare extends Widget_Base {
 		$this->add_responsive_control(
 			'label_radius',
 			array(
-				'label'      => esc_html__( 'Border radius', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Border radius', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .rocketkit-image-compare__label' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .orbitkit-image-compare__label' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -310,13 +310,13 @@ class Widget_Image_Compare extends Widget_Base {
 		);
 
 		$classes = array(
-			'rocketkit-image-compare',
-			'rocketkit-image-compare--' . esc_attr( $orientation ),
-			'rocketkit-image-compare--handler-' . esc_attr( $handler ),
+			'orbitkit-image-compare',
+			'orbitkit-image-compare--' . esc_attr( $orientation ),
+			'orbitkit-image-compare--handler-' . esc_attr( $handler ),
 		);
 
 		if ( $move_hover ) {
-			$classes[] = 'rocketkit-image-compare--move-hover';
+			$classes[] = 'orbitkit-image-compare--move-hover';
 		}
 
 		?>
@@ -325,26 +325,26 @@ class Widget_Image_Compare extends Widget_Base {
 			data-config="<?php echo esc_attr( wp_json_encode( $config ) ); ?>"
 			style="--rk-compare-pos: <?php echo esc_attr( $start ); ?>%;"
 		>
-			<div class="rocketkit-image-compare__stage" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( (string) $start ); ?>" aria-label="<?php esc_attr_e( 'Image comparison slider', 'rocketkit-addons-for-elementor' ); ?>">
-				<div class="rocketkit-image-compare__layer rocketkit-image-compare__layer--after">
+			<div class="orbitkit-image-compare__stage" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( (string) $start ); ?>" aria-label="<?php esc_attr_e( 'Image comparison slider', 'orbitkit-addons-for-elementor' ); ?>">
+				<div class="orbitkit-image-compare__layer orbitkit-image-compare__layer--after">
 					<?php echo $after_html ? $after_html : $before_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
-				<div class="rocketkit-image-compare__layer rocketkit-image-compare__layer--before">
+				<div class="orbitkit-image-compare__layer orbitkit-image-compare__layer--before">
 					<?php echo $before_html ? $before_html : $after_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
-				<div class="rocketkit-image-compare__handle" aria-hidden="true">
-					<span class="rocketkit-image-compare__handle-line"></span>
-					<span class="rocketkit-image-compare__handle-knob">
-						<span class="rocketkit-image-compare__handle-icon" aria-hidden="true">&#8644;</span>
+				<div class="orbitkit-image-compare__handle" aria-hidden="true">
+					<span class="orbitkit-image-compare__handle-line"></span>
+					<span class="orbitkit-image-compare__handle-knob">
+						<span class="orbitkit-image-compare__handle-icon" aria-hidden="true">&#8644;</span>
 					</span>
 				</div>
 			</div>
 			<?php if ( $show_labels ) : ?>
 				<?php if ( ! empty( $settings['label_before'] ) ) : ?>
-					<span class="rocketkit-image-compare__label rocketkit-image-compare__label--before"><?php echo esc_html( $settings['label_before'] ); ?></span>
+					<span class="orbitkit-image-compare__label orbitkit-image-compare__label--before"><?php echo esc_html( $settings['label_before'] ); ?></span>
 				<?php endif; ?>
 				<?php if ( ! empty( $settings['label_after'] ) ) : ?>
-					<span class="rocketkit-image-compare__label rocketkit-image-compare__label--after"><?php echo esc_html( $settings['label_after'] ); ?></span>
+					<span class="orbitkit-image-compare__label orbitkit-image-compare__label--after"><?php echo esc_html( $settings['label_after'] ); ?></span>
 				<?php endif; ?>
 			<?php endif; ?>
 		</div>

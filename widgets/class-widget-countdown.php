@@ -2,10 +2,10 @@
 /**
  * Countdown Elementor widget.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Widgets;
+namespace OrbitKit\Elementor\Widgets;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,15 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-use RocketKit\Elementor\Includes\Traits\Widget_Base as RocketKit_Widget_Base;
-use RocketKit\Elementor\Includes\Traits\Widget_Style_Controls;
+use OrbitKit\Elementor\Includes\Traits\Widget_Base as OrbitKit_Widget_Base;
+use OrbitKit\Elementor\Includes\Traits\Widget_Style_Controls;
 
 /**
  * Event countdown timer.
  */
 class Widget_Countdown extends Widget_Base {
 
-	use RocketKit_Widget_Base;
+	use OrbitKit_Widget_Base;
 	use Widget_Style_Controls;
 
 	/**
@@ -32,11 +32,11 @@ class Widget_Countdown extends Widget_Base {
 	}
 
 	public function get_name() {
-		return 'rocketkit_countdown';
+		return 'orbitkit_countdown';
 	}
 
 	public function get_title() {
-		return esc_html__( 'Countdown', 'rocketkit-addons-for-elementor' );
+		return esc_html__( 'Countdown', 'orbitkit-addons-for-elementor' );
 	}
 
 	public function get_icon() {
@@ -44,21 +44,21 @@ class Widget_Countdown extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return array( 'rocketkit' );
+		return array( 'orbitkit' );
 	}
 
 	protected function register_controls() {
 		$this->start_controls_section(
 			'section_content',
 			array(
-				'label' => esc_html__( 'Timer', 'rocketkit-addons-for-elementor' ),
+				'label' => esc_html__( 'Timer', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'due_date',
 			array(
-				'label'   => esc_html__( 'Due date', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Due date', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::DATE_TIME,
 				'default' => gmdate( 'Y-m-d H:i', strtotime( '+30 days' ) ),
 			)
@@ -67,45 +67,45 @@ class Widget_Countdown extends Widget_Base {
 		$this->add_control(
 			'label_days',
 			array(
-				'label'   => esc_html__( 'Days label', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Days label', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Days', 'rocketkit-addons-for-elementor' ),
+				'default' => esc_html__( 'Days', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'label_hours',
 			array(
-				'label'   => esc_html__( 'Hours label', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Hours label', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Hours', 'rocketkit-addons-for-elementor' ),
+				'default' => esc_html__( 'Hours', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'label_minutes',
 			array(
-				'label'   => esc_html__( 'Minutes label', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Minutes label', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Minutes', 'rocketkit-addons-for-elementor' ),
+				'default' => esc_html__( 'Minutes', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'label_seconds',
 			array(
-				'label'   => esc_html__( 'Seconds label', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Seconds label', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Seconds', 'rocketkit-addons-for-elementor' ),
+				'default' => esc_html__( 'Seconds', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
 		$this->add_control(
 			'expired_message',
 			array(
-				'label'   => esc_html__( 'Expired message', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Expired message', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Time is up!', 'rocketkit-addons-for-elementor' ),
+				'default' => esc_html__( 'Time is up!', 'orbitkit-addons-for-elementor' ),
 			)
 		);
 
@@ -113,26 +113,26 @@ class Widget_Countdown extends Widget_Base {
 
 		$this->register_box_style_controls(
 			'style_countdown_unit',
-			esc_html__( 'Time unit box', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-countdown-unit'
+			esc_html__( 'Time unit box', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-countdown-unit'
 		);
 
 		$this->register_typography_style_controls(
 			'style_countdown_value',
-			esc_html__( 'Numbers', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-countdown-value'
+			esc_html__( 'Numbers', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-countdown-value'
 		);
 
 		$this->register_typography_style_controls(
 			'style_countdown_label',
-			esc_html__( 'Labels', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-countdown-label'
+			esc_html__( 'Labels', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-countdown-label'
 		);
 
 		$this->register_typography_style_controls(
 			'style_countdown_expired',
-			esc_html__( 'Expired message', 'rocketkit-addons-for-elementor' ),
-			'.rocketkit-countdown-expired'
+			esc_html__( 'Expired message', 'orbitkit-addons-for-elementor' ),
+			'.orbitkit-countdown-expired'
 		);
 	}
 
@@ -149,14 +149,14 @@ class Widget_Countdown extends Widget_Base {
 			'expired'  => $settings['expired_message'],
 		);
 		?>
-		<div class="rocketkit-countdown" data-config="<?php echo esc_attr( wp_json_encode( $config ) ); ?>">
-			<div class="rocketkit-countdown-grid">
-				<div class="rocketkit-countdown-unit"><span class="rocketkit-countdown-value" data-unit="days">0</span><span class="rocketkit-countdown-label"><?php echo esc_html( $settings['label_days'] ); ?></span></div>
-				<div class="rocketkit-countdown-unit"><span class="rocketkit-countdown-value" data-unit="hours">0</span><span class="rocketkit-countdown-label"><?php echo esc_html( $settings['label_hours'] ); ?></span></div>
-				<div class="rocketkit-countdown-unit"><span class="rocketkit-countdown-value" data-unit="minutes">0</span><span class="rocketkit-countdown-label"><?php echo esc_html( $settings['label_minutes'] ); ?></span></div>
-				<div class="rocketkit-countdown-unit"><span class="rocketkit-countdown-value" data-unit="seconds">0</span><span class="rocketkit-countdown-label"><?php echo esc_html( $settings['label_seconds'] ); ?></span></div>
+		<div class="orbitkit-countdown" data-config="<?php echo esc_attr( wp_json_encode( $config ) ); ?>">
+			<div class="orbitkit-countdown-grid">
+				<div class="orbitkit-countdown-unit"><span class="orbitkit-countdown-value" data-unit="days">0</span><span class="orbitkit-countdown-label"><?php echo esc_html( $settings['label_days'] ); ?></span></div>
+				<div class="orbitkit-countdown-unit"><span class="orbitkit-countdown-value" data-unit="hours">0</span><span class="orbitkit-countdown-label"><?php echo esc_html( $settings['label_hours'] ); ?></span></div>
+				<div class="orbitkit-countdown-unit"><span class="orbitkit-countdown-value" data-unit="minutes">0</span><span class="orbitkit-countdown-label"><?php echo esc_html( $settings['label_minutes'] ); ?></span></div>
+				<div class="orbitkit-countdown-unit"><span class="orbitkit-countdown-value" data-unit="seconds">0</span><span class="orbitkit-countdown-label"><?php echo esc_html( $settings['label_seconds'] ); ?></span></div>
 			</div>
-			<p class="rocketkit-countdown-expired" hidden><?php echo esc_html( $settings['expired_message'] ); ?></p>
+			<p class="orbitkit-countdown-expired" hidden><?php echo esc_html( $settings['expired_message'] ); ?></p>
 		</div>
 		<?php
 	}

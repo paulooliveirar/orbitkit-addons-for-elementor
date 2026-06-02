@@ -1,5 +1,5 @@
 /**
- * RocketKit Addons — Admin settings
+ * OrbitKit Addons — Admin settings
  * UI: restrained SaaS panel, 8px grid, single accent (#03a84e).
  */
 
@@ -31,19 +31,19 @@
 }
 
 /* WordPress chrome */
-.toplevel_page_rocketkit-elementor #wpcontent {
+.toplevel_page_orbitkit-elementor #wpcontent {
 	padding-left: 0;
 }
 
-.toplevel_page_rocketkit-elementor #wpbody-content {
+.toplevel_page_orbitkit-elementor #wpbody-content {
 	padding-bottom: 0;
 }
 
-.toplevel_page_rocketkit-elementor .wrap {
+.toplevel_page_orbitkit-elementor .wrap {
 	margin: 0;
 }
 
-.toplevel_page_rocketkit-elementor #wpfooter {
+.toplevel_page_orbitkit-elementor #wpfooter {
 	display: none;
 }
 

@@ -2,7 +2,7 @@
 
 ## Before submitting
 
-1. Create an account at [wordpress.org](https://wordpress.org/) and request a plugin slug (e.g. `rocketkit-addons-for-elementor`).
+1. Create an account at [wordpress.org](https://wordpress.org/) and request a plugin slug (e.g. `orbitkit-addons-for-elementor`).
 2. Run [Plugin Check](https://wordpress.org/plugins/plugin-check/) on the plugin folder.
 3. Build the release ZIP **without** dev files listed in `.distignore`.
 4. Upload banner (and later screenshots/icon) from `.wordpress-org/assets/` to SVN `/assets/` when the plugin is approved.
@@ -33,8 +33,8 @@ WordPress.org serves banners from the plugin SVN **`/assets/`** folder (sibling 
 
 ```bash
 # From your local SVN checkout (not this repo’s release ZIP):
-cp .wordpress-org/assets/banner-*.jpg /path/to/svn/rocketkit-addons-for-elementor/assets/
-cd /path/to/svn/rocketkit-addons-for-elementor
+cp .wordpress-org/assets/banner-*.jpg /path/to/svn/orbitkit-addons-for-elementor/assets/
+cd /path/to/svn/orbitkit-addons-for-elementor
 svn add assets/banner-*.jpg   # first time only
 svn commit -m "Add plugin directory banner"
 ```
@@ -56,14 +56,14 @@ See [RELEASE.md](RELEASE.md). Summary:
 
 ```bash
 ./scripts/build-zip.sh
-# → build/rocketkit-addons-for-elementor-X.Y.Z.zip
+# → build/orbitkit-addons-for-elementor-X.Y.Z.zip
 ```
 
 Manual alternative:
 
 ```bash
-cd rocketkit-addons-for-elementor
-zip -r ../rocketkit-addons-for-elementor.zip . \
+cd orbitkit-addons-for-elementor
+zip -r ../orbitkit-addons-for-elementor.zip . \
   -x "*.git*" \
   -x "languages/*.pot" \
   -x "languages/*.po" \
@@ -90,13 +90,13 @@ zip -r ../rocketkit-addons-for-elementor.zip . \
 
 ## Internationalization (Plugin Handbook)
 
-- **Text domain:** `rocketkit-addons-for-elementor` (same as plugin slug / directory name).
+- **Text domain:** `orbitkit-addons-for-elementor` (same as plugin slug / directory name).
 - **Domain path:** `/languages` in the plugin header; `.mo` files named `{text-domain}-{locale}.mo`.
 - **Do not** call `load_plugin_textdomain()` for WordPress.org plugins on 4.6+; WordPress loads translations on demand. See [How to Internationalize Your Plugin](https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/).
 - **Bundled locales:** `pt_BR`, `es_ES` (ship `.mo` in release ZIP; exclude `.pot`/`.po` via `.distignore`).
 - **PHP strings:** use `__()`, `_e()`, `esc_html__()`, `printf()` with placeholders (never variables inside translatable strings).
-- **JavaScript:** translated strings via `wp_localize_script()` and `RocketKit_Elementor_I18n::get_*_script_strings()`; see [Handling JavaScript files](https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/#handling-javascript-files).
+- **JavaScript:** translated strings via `wp_localize_script()` and `OrbitKit_Elementor_I18n::get_*_script_strings()`; see [Handling JavaScript files](https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/#handling-javascript-files).
 
 ## Translations on wordpress.org
 
-After the plugin is live, translations can also be contributed via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/rocketkit-addons-for-elementor/).
+After the plugin is live, translations can also be contributed via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/orbitkit-addons-for-elementor/).

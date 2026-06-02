@@ -16,7 +16,7 @@
 	function setPosition($root, percent) {
 		var value = clamp(percent, 0, 100);
 		$root.css('--rk-compare-pos', value + '%');
-		$root.find('.rocketkit-image-compare__stage').attr('aria-valuenow', String(Math.round(value)));
+		$root.find('.orbitkit-image-compare__stage').attr('aria-valuenow', String(Math.round(value)));
 	}
 
 	function getPercentFromEvent($stage, event, config) {
@@ -43,13 +43,13 @@
 	}
 
 	function initCompare($root) {
-		if ($root.data('rocketkit-compare-init')) {
+		if ($root.data('orbitkit-compare-init')) {
 			return;
 		}
-		$root.data('rocketkit-compare-init', true);
+		$root.data('orbitkit-compare-init', true);
 
 		var config = parseConfig($root);
-		var $stage = $root.find('.rocketkit-image-compare__stage');
+		var $stage = $root.find('.orbitkit-image-compare__stage');
 		var start = typeof config.start === 'number' ? config.start : 50;
 		var dragging = false;
 
@@ -60,7 +60,7 @@
 		}
 
 		function onPointerDown(event) {
-			if ($root.hasClass('rocketkit-image-compare--move-hover') && event.type === 'mousedown') {
+			if ($root.hasClass('orbitkit-image-compare--move-hover') && event.type === 'mousedown') {
 				return;
 			}
 			dragging = true;
@@ -70,7 +70,7 @@
 		}
 
 		function onPointerMove(event) {
-			if ($root.hasClass('rocketkit-image-compare--move-hover') && !dragging) {
+			if ($root.hasClass('orbitkit-image-compare--move-hover') && !dragging) {
 				updateFromEvent(event);
 				return;
 			}
@@ -89,7 +89,7 @@
 		$(window).on('mousemove touchmove', onPointerMove);
 		$(window).on('mouseup touchend touchcancel', onPointerUp);
 
-		if ($root.hasClass('rocketkit-image-compare--move-hover')) {
+		if ($root.hasClass('orbitkit-image-compare--move-hover')) {
 			$stage.on('mousemove', onPointerMove);
 		}
 
@@ -118,7 +118,7 @@
 	}
 
 	function initScope($scope) {
-		$scope.find('.rocketkit-image-compare').each(function () {
+		$scope.find('.orbitkit-image-compare').each(function () {
 			initCompare($(this));
 		});
 	}
@@ -131,7 +131,7 @@
 		if (typeof elementorFrontend === 'undefined') {
 			return;
 		}
-		elementorFrontend.hooks.addAction('frontend/element_ready/rocketkit_image_compare.default', function ($scope) {
+		elementorFrontend.hooks.addAction('frontend/element_ready/orbitkit_image_compare.default', function ($scope) {
 			initScope($scope);
 		});
 	});

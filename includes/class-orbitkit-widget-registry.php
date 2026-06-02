@@ -2,10 +2,10 @@
 /**
  * Widget registry (slugs, assets, classes).
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Includes;
+namespace OrbitKit\Elementor\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Central widget definitions.
  */
-class RocketKit_Widget_Registry {
+class OrbitKit_Widget_Registry {
 
 	/**
 	 * @return array<string, array<string, mixed>>
@@ -22,14 +22,14 @@ class RocketKit_Widget_Registry {
 	public static function get_widgets() {
 		return array(
 			'interactive_map' => array(
-				'title'       => __( 'Interactive Map', 'rocketkit-addons-for-elementor' ),
-				'description' => __( 'Maps with markers, heatmap, or selectable regions.', 'rocketkit-addons-for-elementor' ),
+				'title'       => __( 'Interactive Map', 'orbitkit-addons-for-elementor' ),
+				'description' => __( 'Maps with markers, heatmap, or selectable regions.', 'orbitkit-addons-for-elementor' ),
 				'category'    => 'media',
 				'icon'        => 'dashicons-location-alt',
 				'badge'       => 'popular',
-				'class'       => 'RocketKit\\Elementor\\Widgets\\Widget_Interactive_Map',
-				'style'       => 'rocketkit-widget-interactive-map',
-				'script'      => 'rocketkit-widget-interactive-map',
+				'class'       => 'OrbitKit\\Elementor\\Widgets\\Widget_Interactive_Map',
+				'style'       => 'orbitkit-widget-interactive-map',
+				'script'      => 'orbitkit-widget-interactive-map',
 				'style_file'  => 'assets/css/widget-interactive-map.css',
 				'script_file' => 'assets/js/widget-interactive-map.js',
 				'style_deps'  => array( 'leaflet' ),
@@ -37,13 +37,13 @@ class RocketKit_Widget_Registry {
 				'file'        => 'widgets/class-widget-interactive-map.php',
 			),
 			'pricing_table'   => array(
-				'title'       => __( 'Pricing Table', 'rocketkit-addons-for-elementor' ),
-				'description' => __( 'Multi-column pricing plans.', 'rocketkit-addons-for-elementor' ),
+				'title'       => __( 'Pricing Table', 'orbitkit-addons-for-elementor' ),
+				'description' => __( 'Multi-column pricing plans.', 'orbitkit-addons-for-elementor' ),
 				'category'    => 'content',
 				'icon'        => 'dashicons-cart',
 				'badge'       => '',
-				'class'       => 'RocketKit\\Elementor\\Widgets\\Widget_Pricing_Table',
-				'style'       => 'rocketkit-widget-pricing-table',
+				'class'       => 'OrbitKit\\Elementor\\Widgets\\Widget_Pricing_Table',
+				'style'       => 'orbitkit-widget-pricing-table',
 				'script'      => '',
 				'style_file'  => 'assets/css/widget-pricing-table.css',
 				'script_file' => '',
@@ -52,13 +52,13 @@ class RocketKit_Widget_Registry {
 				'file'        => 'widgets/class-widget-pricing-table.php',
 			),
 			'team_member'     => array(
-				'title'       => __( 'Team Member', 'rocketkit-addons-for-elementor' ),
-				'description' => __( 'Team profile card with photo and links.', 'rocketkit-addons-for-elementor' ),
+				'title'       => __( 'Team Member', 'orbitkit-addons-for-elementor' ),
+				'description' => __( 'Team profile card with photo and links.', 'orbitkit-addons-for-elementor' ),
 				'category'    => 'content',
 				'icon'        => 'dashicons-groups',
 				'badge'       => 'popular',
-				'class'       => 'RocketKit\\Elementor\\Widgets\\Widget_Team_Member',
-				'style'       => 'rocketkit-widget-team-member',
+				'class'       => 'OrbitKit\\Elementor\\Widgets\\Widget_Team_Member',
+				'style'       => 'orbitkit-widget-team-member',
 				'script'      => '',
 				'style_file'  => 'assets/css/widget-team-member.css',
 				'script_file' => '',
@@ -67,14 +67,14 @@ class RocketKit_Widget_Registry {
 				'file'        => 'widgets/class-widget-team-member.php',
 			),
 			'countdown'       => array(
-				'title'       => __( 'Countdown', 'rocketkit-addons-for-elementor' ),
-				'description' => __( 'Event countdown timer.', 'rocketkit-addons-for-elementor' ),
+				'title'       => __( 'Countdown', 'orbitkit-addons-for-elementor' ),
+				'description' => __( 'Event countdown timer.', 'orbitkit-addons-for-elementor' ),
 				'category'    => 'content',
 				'icon'        => 'dashicons-clock',
 				'badge'       => '',
-				'class'       => 'RocketKit\\Elementor\\Widgets\\Widget_Countdown',
-				'style'       => 'rocketkit-widget-countdown',
-				'script'      => 'rocketkit-widget-countdown',
+				'class'       => 'OrbitKit\\Elementor\\Widgets\\Widget_Countdown',
+				'style'       => 'orbitkit-widget-countdown',
+				'script'      => 'orbitkit-widget-countdown',
 				'style_file'  => 'assets/css/widget-countdown.css',
 				'script_file' => 'assets/js/widget-countdown.js',
 				'style_deps'  => array(),
@@ -82,14 +82,14 @@ class RocketKit_Widget_Registry {
 				'file'        => 'widgets/class-widget-countdown.php',
 			),
 			'image_compare'   => array(
-				'title'       => __( 'Image Compare', 'rocketkit-addons-for-elementor' ),
-				'description' => __( 'Before and after image slider with horizontal or vertical handle.', 'rocketkit-addons-for-elementor' ),
+				'title'       => __( 'Image Compare', 'orbitkit-addons-for-elementor' ),
+				'description' => __( 'Before and after image slider with horizontal or vertical handle.', 'orbitkit-addons-for-elementor' ),
 				'category'    => 'media',
 				'icon'        => 'dashicons-images-alt2',
 				'badge'       => 'new',
-				'class'       => 'RocketKit\\Elementor\\Widgets\\Widget_Image_Compare',
-				'style'       => 'rocketkit-widget-image-compare',
-				'script'      => 'rocketkit-widget-image-compare',
+				'class'       => 'OrbitKit\\Elementor\\Widgets\\Widget_Image_Compare',
+				'style'       => 'orbitkit-widget-image-compare',
+				'script'      => 'orbitkit-widget-image-compare',
 				'style_file'  => 'assets/css/widget-image-compare.css',
 				'script_file' => 'assets/js/widget-image-compare.js',
 				'style_deps'  => array(),
@@ -97,14 +97,14 @@ class RocketKit_Widget_Registry {
 				'file'        => 'widgets/class-widget-image-compare.php',
 			),
 			'image_stack'     => array(
-				'title'       => __( 'Image Stack Group', 'rocketkit-addons-for-elementor' ),
-				'description' => __( 'Overlapping image stack with shapes, tooltips, and spread on hover.', 'rocketkit-addons-for-elementor' ),
+				'title'       => __( 'Image Stack Group', 'orbitkit-addons-for-elementor' ),
+				'description' => __( 'Overlapping image stack with shapes, tooltips, and spread on hover.', 'orbitkit-addons-for-elementor' ),
 				'category'    => 'media',
 				'icon'        => 'dashicons-format-gallery',
 				'badge'       => 'new',
-				'class'       => 'RocketKit\\Elementor\\Widgets\\Widget_Image_Stack',
-				'style'       => 'rocketkit-widget-image-stack',
-				'script'      => 'rocketkit-widget-image-stack',
+				'class'       => 'OrbitKit\\Elementor\\Widgets\\Widget_Image_Stack',
+				'style'       => 'orbitkit-widget-image-stack',
+				'script'      => 'orbitkit-widget-image-stack',
 				'style_file'  => 'assets/css/widget-image-stack.css',
 				'script_file' => 'assets/js/widget-image-stack.js',
 				'style_deps'  => array(),
@@ -128,7 +128,7 @@ class RocketKit_Widget_Registry {
 	 * @return array<int, string>
 	 */
 	public static function get_style_depends( $slug ) {
-		if ( ! RocketKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
+		if ( ! OrbitKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
 			return array();
 		}
 
@@ -146,7 +146,7 @@ class RocketKit_Widget_Registry {
 	 * @return array<int, string>
 	 */
 	public static function get_script_depends( $slug ) {
-		if ( ! RocketKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
+		if ( ! OrbitKit_Elementor_Settings::is_widget_enabled( $slug ) ) {
 			return array();
 		}
 
@@ -166,9 +166,9 @@ class RocketKit_Widget_Registry {
 	 */
 	public static function get_categories() {
 		return array(
-			'all'     => __( 'All Widgets', 'rocketkit-addons-for-elementor' ),
-			'content' => __( 'Content', 'rocketkit-addons-for-elementor' ),
-			'media'   => __( 'Media', 'rocketkit-addons-for-elementor' ),
+			'all'     => __( 'All Widgets', 'orbitkit-addons-for-elementor' ),
+			'content' => __( 'Content', 'orbitkit-addons-for-elementor' ),
+			'media'   => __( 'Media', 'orbitkit-addons-for-elementor' ),
 		);
 	}
 }

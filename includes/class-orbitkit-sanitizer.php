@@ -2,10 +2,10 @@
 /**
  * Input sanitization helpers.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Includes;
+namespace OrbitKit\Elementor\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Shared sanitizers for widget output.
  */
-class RocketKit_Sanitizer {
+class OrbitKit_Sanitizer {
 
 	/**
 	 * Allowed tags for inline SVG markers.

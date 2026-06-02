@@ -33,9 +33,9 @@ jobs:
 
       - name: Verify plugin constant matches tag
         run: |
-          PLUGIN_VERSION="$(grep -m1 "define( 'ROCKETKIT_ELEMENTOR_VERSION'" rocketkit-elementor-addon.php | sed -E "s/.*'([^']+)'.*/\1/")"
+          PLUGIN_VERSION="$(grep -m1 "define( 'ORBITKIT_ELEMENTOR_VERSION'" orbitkit-elementor-addon.php | sed -E "s/.*'([^']+)'.*/\1/")"
           if [[ "${PLUGIN_VERSION}" != "${{ steps.meta.outputs.version }}" ]]; then
-            echo "ROCKETKIT_ELEMENTOR_VERSION (${PLUGIN_VERSION}) does not match tag." >&2
+            echo "ORBITKIT_ELEMENTOR_VERSION (${PLUGIN_VERSION}) does not match tag." >&2
             exit 1
           fi
 

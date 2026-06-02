@@ -1,11 +1,11 @@
 <?php
 /**
- * Reusable Elementor style controls for RocketKit widgets.
+ * Reusable Elementor style controls for OrbitKit widgets.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Includes\Traits;
+namespace OrbitKit\Elementor\Includes\Traits;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -57,7 +57,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			$section_id . '_radius',
 			array(
-				'label'      => esc_html__( 'Border radius', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Border radius', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
@@ -77,7 +77,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			$section_id . '_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Padding', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
@@ -116,7 +116,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			$section_id . '_color',
 			array(
-				'label'     => esc_html__( 'Color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $selector => 'color: {{VALUE}};',
@@ -155,13 +155,13 @@ trait Widget_Style_Controls {
 
 		$this->start_controls_tab(
 			$section_id . '_tab_normal',
-			array( 'label' => esc_html__( 'Normal', 'rocketkit-addons-for-elementor' ) )
+			array( 'label' => esc_html__( 'Normal', 'orbitkit-addons-for-elementor' ) )
 		);
 
 		$this->add_control(
 			$section_id . '_color',
 			array(
-				'label'     => esc_html__( 'Text color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Text color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $selector => 'color: {{VALUE}};',
@@ -172,7 +172,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			$section_id . '_bg',
 			array(
-				'label'     => esc_html__( 'Background', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Background', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $selector => 'background-color: {{VALUE}};',
@@ -184,13 +184,13 @@ trait Widget_Style_Controls {
 
 		$this->start_controls_tab(
 			$section_id . '_tab_hover',
-			array( 'label' => esc_html__( 'Hover', 'rocketkit-addons-for-elementor' ) )
+			array( 'label' => esc_html__( 'Hover', 'orbitkit-addons-for-elementor' ) )
 		);
 
 		$this->add_control(
 			$section_id . '_color_hover',
 			array(
-				'label'     => esc_html__( 'Text color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Text color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $selector . ':hover' => 'color: {{VALUE}};',
@@ -201,7 +201,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			$section_id . '_bg_hover',
 			array(
-				'label'     => esc_html__( 'Background', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Background', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $selector . ':hover' => 'background-color: {{VALUE}};',
@@ -224,7 +224,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			$section_id . '_radius',
 			array(
-				'label'      => esc_html__( 'Border radius', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Border radius', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
@@ -236,7 +236,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			$section_id . '_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Padding', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
@@ -252,16 +252,16 @@ trait Widget_Style_Controls {
 	 * Marker popup styles (markers display mode).
 	 */
 	protected function register_marker_popup_style_controls() {
-		$popup_sel    = '.rocketkit-marker-popup';
-		$title_sel    = '.rocketkit-marker-popup__title';
-		$desc_sel     = '.rocketkit-marker-popup__description';
+		$popup_sel    = '.orbitkit-marker-popup';
+		$title_sel    = '.orbitkit-marker-popup__title';
+		$desc_sel     = '.orbitkit-marker-popup__description';
 		$wrapper_sel  = '.leaflet-popup-content-wrapper';
 		$tip_sel      = '.leaflet-popup-tip';
 
 		$this->start_controls_section(
 			'style_marker_popup',
 			array(
-				'label'     => esc_html__( 'Marker popup', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Marker popup', 'orbitkit-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'display_mode' => 'markers' ),
 			)
@@ -286,7 +286,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			'style_marker_popup_radius',
 			array(
-				'label'      => esc_html__( 'Border radius', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Border radius', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
@@ -306,7 +306,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			'style_marker_popup_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Padding', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
@@ -318,7 +318,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_marker_popup_tip_color',
 			array(
-				'label'     => esc_html__( 'Popup arrow color (Leaflet)', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Popup arrow color (Leaflet)', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $tip_sel => 'background: {{VALUE}};',
@@ -330,7 +330,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_marker_leaflet_reset_heading',
 			array(
-				'label'     => esc_html__( 'Leaflet popup shell', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Leaflet popup shell', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -339,7 +339,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_marker_leaflet_wrapper_bg',
 			array(
-				'label'     => esc_html__( 'Wrapper background', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Wrapper background', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'transparent',
 				'selectors' => array(
@@ -353,7 +353,7 @@ trait Widget_Style_Controls {
 		$this->start_controls_section(
 			'style_marker_title',
 			array(
-				'label'     => esc_html__( 'Marker title', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Marker title', 'orbitkit-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'display_mode' => 'markers' ),
 			)
@@ -370,7 +370,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_marker_title_color',
 			array(
-				'label'     => esc_html__( 'Color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $title_sel => 'color: {{VALUE}};',
@@ -383,7 +383,7 @@ trait Widget_Style_Controls {
 		$this->start_controls_section(
 			'style_marker_description',
 			array(
-				'label'     => esc_html__( 'Marker description', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Marker description', 'orbitkit-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'display_mode' => 'markers' ),
 			)
@@ -400,7 +400,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_marker_description_color',
 			array(
-				'label'     => esc_html__( 'Color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $desc_sel => 'color: {{VALUE}};',
@@ -411,7 +411,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_marker_description_spacing',
 			array(
-				'label'      => esc_html__( 'Spacing from title', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Spacing from title', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -436,7 +436,7 @@ trait Widget_Style_Controls {
 		$this->start_controls_section(
 			'style_heatmap',
 			array(
-				'label'     => esc_html__( 'Heatmap', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Heatmap', 'orbitkit-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'display_mode' => 'heatmap' ),
 			)
@@ -445,7 +445,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'heat_color_low',
 			array(
-				'label'   => esc_html__( 'Low intensity color', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Low intensity color', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::COLOR,
 				'default' => '#2b83ba',
 			)
@@ -454,7 +454,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'heat_color_mid',
 			array(
-				'label'   => esc_html__( 'Mid intensity color', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'Mid intensity color', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::COLOR,
 				'default' => '#abdda4',
 			)
@@ -463,7 +463,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'heat_color_high',
 			array(
-				'label'   => esc_html__( 'High intensity color', 'rocketkit-addons-for-elementor' ),
+				'label'   => esc_html__( 'High intensity color', 'orbitkit-addons-for-elementor' ),
 				'type'    => Controls_Manager::COLOR,
 				'default' => '#d7191c',
 			)
@@ -472,7 +472,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'heat_blur',
 			array(
-				'label'      => esc_html__( 'Blur', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Blur', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(
@@ -497,14 +497,14 @@ trait Widget_Style_Controls {
 	 * Region hover tooltip (regions display mode).
 	 */
 	protected function register_region_tooltip_style_controls() {
-		$tooltip_card_sel = '.rocketkit-region-tooltip';
-		$title_sel   = '.rocketkit-region-tooltip__title';
-		$desc_sel    = '.rocketkit-region-tooltip__description';
+		$tooltip_card_sel = '.orbitkit-region-tooltip';
+		$title_sel   = '.orbitkit-region-tooltip__title';
+		$desc_sel    = '.orbitkit-region-tooltip__description';
 
 		$this->start_controls_section(
 			'style_region_tooltip',
 			array(
-				'label'     => esc_html__( 'Region tooltip', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Region tooltip', 'orbitkit-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'display_mode' => 'regions' ),
 			)
@@ -537,7 +537,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			'style_region_tooltip_radius',
 			array(
-				'label'      => esc_html__( 'Border radius', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Border radius', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
@@ -549,7 +549,7 @@ trait Widget_Style_Controls {
 		$this->add_responsive_control(
 			'style_region_tooltip_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Padding', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
@@ -562,7 +562,7 @@ trait Widget_Style_Controls {
 			'style_region_tooltip_caret_note',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => esc_html__( 'The pointer uses the same fill as the card background so there is no gap between the tooltip and the arrow.', 'rocketkit-addons-for-elementor' ),
+				'raw'             => esc_html__( 'The pointer uses the same fill as the card background so there is no gap between the tooltip and the arrow.', 'orbitkit-addons-for-elementor' ),
 				'content_classes' => 'elementor-descriptor',
 			)
 		);
@@ -572,7 +572,7 @@ trait Widget_Style_Controls {
 		$this->start_controls_section(
 			'style_region_tooltip_title',
 			array(
-				'label'     => esc_html__( 'Region label', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Region label', 'orbitkit-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'display_mode' => 'regions' ),
 			)
@@ -589,7 +589,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_region_tooltip_title_color',
 			array(
-				'label'     => esc_html__( 'Color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $title_sel => 'color: {{VALUE}};',
@@ -602,7 +602,7 @@ trait Widget_Style_Controls {
 		$this->start_controls_section(
 			'style_region_tooltip_description',
 			array(
-				'label'     => esc_html__( 'Region description', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Region description', 'orbitkit-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array( 'display_mode' => 'regions' ),
 			)
@@ -619,7 +619,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_region_tooltip_description_color',
 			array(
-				'label'     => esc_html__( 'Color', 'rocketkit-addons-for-elementor' ),
+				'label'     => esc_html__( 'Color', 'orbitkit-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $desc_sel => 'color: {{VALUE}};',
@@ -630,7 +630,7 @@ trait Widget_Style_Controls {
 		$this->add_control(
 			'style_region_tooltip_description_spacing',
 			array(
-				'label'      => esc_html__( 'Spacing from label', 'rocketkit-addons-for-elementor' ),
+				'label'      => esc_html__( 'Spacing from label', 'orbitkit-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
 				'range'      => array(

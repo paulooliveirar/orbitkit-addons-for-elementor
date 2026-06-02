@@ -6,7 +6,7 @@
 		return;
 	}
 
-	var i18n = (window.rocketkitAdmin && window.rocketkitAdmin.i18n) || {};
+	var i18n = (window.orbitkitAdmin && window.orbitkitAdmin.i18n) || {};
 
 	/* Tabs */
 	$app.on('click', '.rk-settings__nav-item', function () {

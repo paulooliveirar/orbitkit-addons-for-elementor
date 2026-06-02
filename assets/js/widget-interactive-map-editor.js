@@ -1,7 +1,7 @@
 (function ($) {
 	'use strict';
 
-	var cfg = window.rocketkitMapEditor || {};
+	var cfg = window.orbitkitMapEditor || {};
 	var i18n = cfg.i18n || {};
 	var MIN_CHARS = cfg.minChars || 5;
 	var MAX_RESULTS = cfg.maxResults || 3;
@@ -25,7 +25,7 @@
 	}
 
 	function setStatus($row, message) {
-		$row.find('.rocketkit-marker-geocode-status').text(message || '');
+		$row.find('.orbitkit-marker-geocode-status').text(message || '');
 	}
 
 	function setCoords($row, lat, lng) {
@@ -38,17 +38,17 @@
 		if (!$wrapper.length) {
 			return null;
 		}
-		$wrapper.addClass('rocketkit-place-search-wrap');
-		if (!$wrapper.find('.rocketkit-place-suggestions').length) {
+		$wrapper.addClass('orbitkit-place-search-wrap');
+		if (!$wrapper.find('.orbitkit-place-suggestions').length) {
 			$wrapper.append(
-				'<ul class="rocketkit-place-suggestions" role="listbox" hidden></ul>'
+				'<ul class="orbitkit-place-suggestions" role="listbox" hidden></ul>'
 			);
 		}
-		return $wrapper.find('.rocketkit-place-suggestions');
+		return $wrapper.find('.orbitkit-place-suggestions');
 	}
 
 	function hideSuggestions($row) {
-		$row.find('.rocketkit-place-suggestions').attr('hidden', true).empty();
+		$row.find('.orbitkit-place-suggestions').attr('hidden', true).empty();
 	}
 
 	function showSuggestions($row, results) {
@@ -68,7 +68,7 @@
 			$('<li>', {
 				role: 'option',
 				tabindex: 0,
-				class: 'rocketkit-place-suggestions__item',
+				class: 'orbitkit-place-suggestions__item',
 				text: item.display,
 			})
 				.data('place', item)
@@ -185,12 +185,12 @@
 		}
 	});
 
-	$(document).on('click', '.rocketkit-place-suggestions__item', function (e) {
+	$(document).on('click', '.orbitkit-place-suggestions__item', function (e) {
 		e.preventDefault();
 		selectPlace($(this));
 	});
 
-	$(document).on('keydown', '.rocketkit-place-suggestions__item', function (e) {
+	$(document).on('keydown', '.orbitkit-place-suggestions__item', function (e) {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
 			selectPlace($(this));
@@ -199,8 +199,8 @@
 
 	$(document).on('keydown', '.elementor-control-marker_place_search input', function (e) {
 		var $row = getRepeaterRow($(this));
-		var $list = $row.find('.rocketkit-place-suggestions');
-		var $items = $list.find('.rocketkit-place-suggestions__item');
+		var $list = $row.find('.orbitkit-place-suggestions');
+		var $items = $list.find('.orbitkit-place-suggestions__item');
 		var $active = $items.filter('.is-active');
 
 		if (!$items.length || $list.is('[hidden]')) {
@@ -239,7 +239,7 @@
 		var $row = getRepeaterRow($(this));
 		setTimeout(function () {
 			hideSuggestions($row);
-			$row.find('.rocketkit-place-suggestions__item').removeClass('is-active');
+			$row.find('.orbitkit-place-suggestions__item').removeClass('is-active');
 		}, 200);
 	});
 

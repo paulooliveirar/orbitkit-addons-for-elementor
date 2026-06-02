@@ -31,8 +31,8 @@
 	}
 
 	function syncRegionTooltipCaretFill(tooltipEl) {
-		var shell = tooltipEl.querySelector('.rocketkit-region-tooltip-shell');
-		var card = tooltipEl.querySelector('.rocketkit-region-tooltip');
+		var shell = tooltipEl.querySelector('.orbitkit-region-tooltip-shell');
+		var card = tooltipEl.querySelector('.orbitkit-region-tooltip');
 		if (!shell || !card) {
 			return;
 		}
@@ -45,7 +45,7 @@
 	function bindRegionLeafletTooltip(featureLayer, tooltipHtml) {
 		featureLayer.bindTooltip(tooltipHtml, {
 			sticky: true,
-			className: 'rocketkit-region-tooltip-wrap',
+			className: 'orbitkit-region-tooltip-wrap',
 			direction: 'top',
 			offset: [0, -16],
 			opacity: 1,
@@ -57,10 +57,10 @@
 				return;
 			}
 			syncRegionTooltipCaretFill(el);
-			el.classList.remove('rocketkit-region-tooltip--show');
+			el.classList.remove('orbitkit-region-tooltip--show');
 			window.requestAnimationFrame(function () {
 				window.requestAnimationFrame(function () {
-					el.classList.add('rocketkit-region-tooltip--show');
+					el.classList.add('orbitkit-region-tooltip--show');
 				});
 			});
 		});
@@ -68,26 +68,26 @@
 		featureLayer.on('tooltipclose', function (e) {
 			var el = e.tooltip && e.tooltip.getElement ? e.tooltip.getElement() : null;
 			if (el) {
-				el.classList.remove('rocketkit-region-tooltip--show');
+				el.classList.remove('orbitkit-region-tooltip--show');
 			}
 		});
 	}
 
 	function buildRegionTooltipHtml(region) {
-		var parts = ['<div class="rocketkit-region-tooltip-shell">', '<div class="rocketkit-region-tooltip">'];
+		var parts = ['<div class="orbitkit-region-tooltip-shell">', '<div class="orbitkit-region-tooltip">'];
 		if (region.label) {
-			parts.push('<div class="rocketkit-region-tooltip__title">' + escapeHtml(region.label) + '</div>');
+			parts.push('<div class="orbitkit-region-tooltip__title">' + escapeHtml(region.label) + '</div>');
 		}
 		if (region.description) {
 			parts.push(
-				'<div class="rocketkit-region-tooltip__description">' +
+				'<div class="orbitkit-region-tooltip__description">' +
 					formatDescription(region.description) +
 					'</div>'
 			);
 		}
 		parts.push(
 			'</div>',
-			'<span class="rocketkit-region-tooltip__caret" aria-hidden="true"></span>',
+			'<span class="orbitkit-region-tooltip__caret" aria-hidden="true"></span>',
 			'</div>'
 		);
 		return parts.join('');
@@ -243,7 +243,7 @@
 			};
 		});
 
-		if (!map._rocketkitRegionsListeners) {
+		if (!map._orbitkitRegionsListeners) {
 			map.data.addListener('mouseover', function (event) {
 				var hoverBorder = event.feature.getProperty('_rkHoverBorder') || '#ff6b35';
 				var hoverFillOn = event.feature.getProperty('_rkHoverFill') !== false;
@@ -273,8 +273,8 @@
 				infoWindow.close();
 			});
 
-			map._rocketkitRegionsListeners = true;
-			map._rocketkitRegionInfoWindow = infoWindow;
+			map._orbitkitRegionsListeners = true;
+			map._orbitkitRegionInfoWindow = infoWindow;
 		}
 
 		if (hasBounds) {
@@ -363,12 +363,12 @@
 		var icon = normalizeMarkerIcon(markerIcon);
 		var dims = getMarkerDimensions(icon.shape, icon.size);
 		var html =
-			'<div class="rocketkit-map-marker rocketkit-map-marker--' + icon.shape + '">' +
+			'<div class="orbitkit-map-marker orbitkit-map-marker--' + icon.shape + '">' +
 			buildMarkerSvg(icon.shape, icon.color, icon.size) +
 			'</div>';
 
 		return L.divIcon({
-			className: 'rocketkit-map-marker-wrap',
+			className: 'orbitkit-map-marker-wrap',
 			html: html,
 			iconSize: [dims.width, dims.height],
 			iconAnchor: [dims.anchorX, dims.anchorY],
@@ -545,37 +545,37 @@
 	}
 
 	function buildMarkerPopupHtml(marker) {
-		var parts = ['<div class="rocketkit-marker-popup">'];
+		var parts = ['<div class="orbitkit-marker-popup">'];
 
 		if (marker.title) {
 			parts.push(
-				'<div class="rocketkit-marker-popup__title">' + escapeHtml(marker.title) + '</div>'
+				'<div class="orbitkit-marker-popup__title">' + escapeHtml(marker.title) + '</div>'
 			);
 		}
 		if (marker.description) {
 			parts.push(
-				'<div class="rocketkit-marker-popup__description">' +
+				'<div class="orbitkit-marker-popup__description">' +
 					formatDescription(marker.description) +
 					'</div>'
 			);
 		}
 		if (parts.length === 1) {
-			parts.push('<div class="rocketkit-marker-popup__title"></div>');
+			parts.push('<div class="orbitkit-marker-popup__title"></div>');
 		}
 		parts.push('</div>');
 		return parts.join('');
 	}
 
 	function initLeafletMap($widget, config) {
-		var $canvas = $widget.find('.rocketkit-map-canvas');
+		var $canvas = $widget.find('.orbitkit-map-canvas');
 		if (!$canvas.length || typeof L === 'undefined') {
 			return;
 		}
 
-		if ($canvas.data('rocketkit-map-init')) {
+		if ($canvas.data('orbitkit-map-init')) {
 			return;
 		}
-		$canvas.data('rocketkit-map-init', true);
+		$canvas.data('orbitkit-map-init', true);
 
 		var scrollWheelZoom = config.scrollWheelZoom !== false;
 		var map = L.map($canvas[0], {
@@ -594,7 +594,7 @@
 				L.marker([marker.lat, marker.lng], leafletMarkerOptions)
 					.addTo(map)
 					.bindPopup(buildMarkerPopupHtml(marker), {
-						className: 'rocketkit-leaflet-popup',
+						className: 'orbitkit-leaflet-popup',
 					});
 			});
 		}
@@ -622,15 +622,15 @@
 	}
 
 	function initGoogleMap($widget, config) {
-		var $canvas = $widget.find('.rocketkit-map-canvas');
+		var $canvas = $widget.find('.orbitkit-map-canvas');
 		if (!$canvas.length || typeof google === 'undefined' || !google.maps) {
 			return;
 		}
 
-		if ($canvas.data('rocketkit-map-init')) {
+		if ($canvas.data('orbitkit-map-init')) {
 			return;
 		}
-		$canvas.data('rocketkit-map-init', true);
+		$canvas.data('orbitkit-map-init', true);
 
 		var scrollWheelZoom = config.scrollWheelZoom !== false;
 		var map = new google.maps.Map($canvas[0], {
@@ -684,7 +684,7 @@
 	}
 
 	function initMapWidget($widget) {
-		var config = parseConfig($widget.find('.rocketkit-map-canvas'));
+		var config = parseConfig($widget.find('.orbitkit-map-canvas'));
 		if (!config.center) {
 			return;
 		}
@@ -697,7 +697,7 @@
 	}
 
 	function initAllMaps($scope) {
-		$scope.find('.rocketkit-map-widget').each(function () {
+		$scope.find('.orbitkit-map-widget').each(function () {
 			initMapWidget($(this));
 		});
 	}
@@ -710,8 +710,8 @@
 		if (typeof elementorFrontend === 'undefined') {
 			return;
 		}
-		elementorFrontend.hooks.addAction('frontend/element_ready/rocketkit_interactive_map.default', function ($scope) {
-			$scope.find('.rocketkit-map-canvas').removeData('rocketkit-map-init');
+		elementorFrontend.hooks.addAction('frontend/element_ready/orbitkit_interactive_map.default', function ($scope) {
+			$scope.find('.orbitkit-map-canvas').removeData('orbitkit-map-init');
 			initAllMaps($scope);
 		});
 	});

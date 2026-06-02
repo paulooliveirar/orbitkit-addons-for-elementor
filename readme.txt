@@ -1,5 +1,5 @@
-=== RocketKit Addons For Elementor ===
-Contributors: paulooliveirar
+=== OrbitKit Addons For Elementor ===
+Contributors: orbittech
 Tags: elementor, widgets, map, countdown, gallery
 Requires at least: 6.5
 Tested up to: 7.0
@@ -13,7 +13,7 @@ Elementor widgets for maps, pricing, team cards, countdown, image compare, and i
 
 == Description ==
 
-**RocketKit Addons For Elementor** adds a dedicated **RocketKit** category in Elementor with production-ready widgets. Enable only the widgets you need from **RocketKit Addons → Elements** to keep your site lean.
+**OrbitKit Addons For Elementor** adds a dedicated **OrbitKit** category in Elementor with production-ready widgets. Enable only the widgets you need from **OrbitKit Addons → Elements** to keep your site lean.
 
 = Widgets =
 
@@ -40,11 +40,11 @@ This plugin is developed by [Orbittech](https://orbittech.com.br). Support: supo
 
 == Installation ==
 
-1. Upload the plugin folder to `/wp-content/plugins/rocketkit-addons-for-elementor/` or install the ZIP from Plugins → Add New.
+1. Upload the plugin folder to `/wp-content/plugins/orbitkit-addons-for-elementor/` or install the ZIP from Plugins → Add New.
 2. Activate the plugin through the **Plugins** screen.
 3. Ensure **Elementor** is installed and active.
-4. Open **RocketKit Addons** in the admin menu to enable widgets and optional integrations.
-5. Edit a page with Elementor and find widgets under the **RocketKit** category.
+4. Open **OrbitKit Addons** in the admin menu to enable widgets and optional integrations.
+5. Edit a page with Elementor and find widgets under the **OrbitKit** category.
 
 == Frequently Asked Questions ==
 
@@ -54,15 +54,15 @@ No. This plugin works with the free version of Elementor.
 
 = Does the map work without an API key? =
 
-Yes. The default **OpenStreetMap (Leaflet)** provider does not require a Google API key. Google Maps is optional and needs a key under **RocketKit Addons → Integrations**.
+Yes. The default **OpenStreetMap (Leaflet)** provider does not require a Google API key. Google Maps is optional and needs a key under **OrbitKit Addons → Integrations**.
 
 = How do I use Portuguese or Spanish? =
 
-Set **Settings → General → Site Language** to Português do Brasil or Español. The plugin ships compiled `.mo` files in the `languages` folder (`rocketkit-addons-for-elementor-pt_BR.mo`, `rocketkit-addons-for-elementor-es_ES.mo`). WordPress loads them automatically for the plugin text domain (no manual `load_plugin_textdomain()` call required on WordPress 4.6+).
+Set **Settings → General → Site Language** to Português do Brasil or Español. The plugin ships compiled `.mo` files in the `languages` folder (`orbitkit-addons-for-elementor-pt_BR.mo`, `orbitkit-addons-for-elementor-es_ES.mo`). WordPress loads them automatically for the plugin text domain (no manual `load_plugin_textdomain()` call required on WordPress 4.6+).
 
 = Can I contribute translations? =
 
-After the plugin is approved on WordPress.org, join the community project at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/rocketkit-addons-for-elementor/). Until then, you can extend the bundled `languages` files or contact the author.
+After the plugin is approved on WordPress.org, join the community project at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/orbitkit-addons-for-elementor/). Until then, you can extend the bundled `languages` files or contact the author.
 
 = What happens when I uninstall? =
 
@@ -70,7 +70,7 @@ Plugin settings (enabled widgets and API key) are removed from the database. Ele
 
 == Screenshots ==
 
-1. RocketKit Addons settings — Elements tab with widget toggles.
+1. OrbitKit Addons settings — Elements tab with widget toggles.
 2. Interactive Map widget in Elementor.
 3. Image Compare before/after slider on the frontend.
 

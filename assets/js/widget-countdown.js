@@ -22,8 +22,8 @@
 		var diff = due - now;
 
 		if (diff <= 0) {
-			$el.find('.rocketkit-countdown-grid').hide();
-			$el.find('.rocketkit-countdown-expired').prop('hidden', false);
+			$el.find('.orbitkit-countdown-grid').hide();
+			$el.find('.orbitkit-countdown-expired').prop('hidden', false);
 			return;
 		}
 
@@ -42,16 +42,16 @@
 	}
 
 	function initCountdown($scope) {
-		$scope.find('.rocketkit-countdown').each(function () {
+		$scope.find('.orbitkit-countdown').each(function () {
 			var $el = $(this);
 			updateCountdown($el);
-			if ($el.data('rocketkit-countdown-interval')) {
-				clearInterval($el.data('rocketkit-countdown-interval'));
+			if ($el.data('orbitkit-countdown-interval')) {
+				clearInterval($el.data('orbitkit-countdown-interval'));
 			}
 			var interval = setInterval(function () {
 				updateCountdown($el);
 			}, 1000);
-			$el.data('rocketkit-countdown-interval', interval);
+			$el.data('orbitkit-countdown-interval', interval);
 		});
 	}
 
@@ -63,7 +63,7 @@
 		if (typeof elementorFrontend === 'undefined') {
 			return;
 		}
-		elementorFrontend.hooks.addAction('frontend/element_ready/rocketkit_countdown.default', function ($scope) {
+		elementorFrontend.hooks.addAction('frontend/element_ready/orbitkit_countdown.default', function ($scope) {
 			initCountdown($scope);
 		});
 	});

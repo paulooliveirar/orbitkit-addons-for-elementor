@@ -1,32 +1,32 @@
-.rocketkit-image-stack {
+.orbitkit-image-stack {
 	display: inline-block;
 	max-width: 100%;
 }
 
-.rocketkit-image-stack__track {
+.orbitkit-image-stack__track {
 	display: inline-flex;
 	align-items: center;
 	flex-direction: row;
 }
 
-.rocketkit-image-stack__item {
+.orbitkit-image-stack__item {
 	position: relative;
 	flex-shrink: 0;
 	transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), margin 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 	z-index: calc(10 + var(--rk-stack-index, 0));
 }
 
-.rocketkit-image-stack__item + .rocketkit-image-stack__item {
+.orbitkit-image-stack__item + .orbitkit-image-stack__item {
 	margin-left: -22px;
 }
 
-.rocketkit-image-stack__link {
+.orbitkit-image-stack__link {
 	display: block;
 	color: inherit;
 	text-decoration: none;
 }
 
-.rocketkit-image-stack__thumb {
+.orbitkit-image-stack__thumb {
 	display: block;
 	overflow: hidden;
 	border: 3px solid #fff;
@@ -35,7 +35,7 @@
 	line-height: 0;
 }
 
-.rocketkit-image-stack__thumb img {
+.orbitkit-image-stack__thumb img {
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -43,93 +43,93 @@
 }
 
 /* Sizes */
-.rocketkit-image-stack--size-small .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--size-small .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--size-small .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--size-small .orbitkit-image-stack__overflow {
 	width: 40px;
 	height: 40px;
 }
 
-.rocketkit-image-stack--size-medium .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--size-medium .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--size-medium .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--size-medium .orbitkit-image-stack__overflow {
 	width: 56px;
 	height: 56px;
 }
 
-.rocketkit-image-stack--size-large .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--size-large .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--size-large .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--size-large .orbitkit-image-stack__overflow {
 	width: 72px;
 	height: 72px;
 }
 
 /* Shapes */
-.rocketkit-image-stack--shape-circle .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--shape-circle .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--shape-circle .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--shape-circle .orbitkit-image-stack__overflow {
 	border-radius: 50%;
 }
 
-.rocketkit-image-stack--shape-rounded .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--shape-rounded .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--shape-rounded .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--shape-rounded .orbitkit-image-stack__overflow {
 	border-radius: 12px;
 }
 
-.rocketkit-image-stack--shape-square .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--shape-square .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--shape-square .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--shape-square .orbitkit-image-stack__overflow {
 	border-radius: 0;
 }
 
-.rocketkit-image-stack--shape-drop .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--shape-drop .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--shape-drop .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--shape-drop .orbitkit-image-stack__overflow {
 	border-radius: 50% 50% 50% 12%;
 }
 
-.rocketkit-image-stack--shape-corner .rocketkit-image-stack__thumb,
-.rocketkit-image-stack--shape-corner .rocketkit-image-stack__overflow {
+.orbitkit-image-stack--shape-corner .orbitkit-image-stack__thumb,
+.orbitkit-image-stack--shape-corner .orbitkit-image-stack__overflow {
 	border-radius: 50% 12px 50% 50%;
 }
 
 /* Rotation per index */
-.rocketkit-image-stack__item--index-0 {
+.orbitkit-image-stack__item--index-0 {
 	transform: rotate(-6deg);
 }
 
-.rocketkit-image-stack__item--index-1 {
+.orbitkit-image-stack__item--index-1 {
 	transform: rotate(2deg);
 }
 
-.rocketkit-image-stack__item--index-2 {
+.orbitkit-image-stack__item--index-2 {
 	transform: rotate(8deg);
 }
 
-.rocketkit-image-stack__item--index-3 {
+.orbitkit-image-stack__item--index-3 {
 	transform: rotate(-3deg);
 }
 
-.rocketkit-image-stack__item--index-4,
-.rocketkit-image-stack__item--index-5,
-.rocketkit-image-stack__item--index-6 {
+.orbitkit-image-stack__item--index-4,
+.orbitkit-image-stack__item--index-5,
+.orbitkit-image-stack__item--index-6 {
 	transform: rotate(4deg);
 }
 
 /* Spread on hover */
-.rocketkit-image-stack--spread-hover:hover .rocketkit-image-stack__item {
+.orbitkit-image-stack--spread-hover:hover .orbitkit-image-stack__item {
 	transform: rotate(0deg) translateY(-2px);
 }
 
-.rocketkit-image-stack--spread-hover:hover .rocketkit-image-stack__item--index-0 {
+.orbitkit-image-stack--spread-hover:hover .orbitkit-image-stack__item--index-0 {
 	margin-right: 4px;
 }
 
-.rocketkit-image-stack--spread-hover:hover .rocketkit-image-stack__item--index-1 {
+.orbitkit-image-stack--spread-hover:hover .orbitkit-image-stack__item--index-1 {
 	margin-left: -14px;
 	margin-right: 4px;
 }
 
-.rocketkit-image-stack--spread-hover:hover .rocketkit-image-stack__item--index-2 {
+.orbitkit-image-stack--spread-hover:hover .orbitkit-image-stack__item--index-2 {
 	margin-left: -14px;
 }
 
 /* Tooltip */
-.rocketkit-image-stack__tooltip {
+.orbitkit-image-stack__tooltip {
 	position: absolute;
 	left: 50%;
 	bottom: calc(100% + 10px);
@@ -148,7 +148,7 @@
 	z-index: 20;
 }
 
-.rocketkit-image-stack__tooltip::after {
+.orbitkit-image-stack__tooltip::after {
 	content: '';
 	position: absolute;
 	left: 50%;
@@ -158,19 +158,19 @@
 	border-top-color: #1e293b;
 }
 
-.rocketkit-image-stack__item:hover .rocketkit-image-stack__tooltip,
-.rocketkit-image-stack__item:focus-within .rocketkit-image-stack__tooltip {
+.orbitkit-image-stack__item:hover .orbitkit-image-stack__tooltip,
+.orbitkit-image-stack__item:focus-within .orbitkit-image-stack__tooltip {
 	opacity: 1;
 	transform: translateX(-50%) translateY(0);
 }
 
-.rocketkit-image-stack__item:hover,
-.rocketkit-image-stack__item:focus-within {
+.orbitkit-image-stack__item:hover,
+.orbitkit-image-stack__item:focus-within {
 	z-index: 30;
 }
 
 /* Overflow badge */
-.rocketkit-image-stack__overflow {
+.orbitkit-image-stack__overflow {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -186,8 +186,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.rocketkit-image-stack__item,
-	.rocketkit-image-stack__tooltip {
+	.orbitkit-image-stack__item,
+	.orbitkit-image-stack__tooltip {
 		transition: none;
 	}
 }

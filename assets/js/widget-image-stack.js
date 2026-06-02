@@ -2,12 +2,12 @@
 	'use strict';
 
 	function initStack($scope) {
-		$scope.find('.rocketkit-image-stack').each(function () {
+		$scope.find('.orbitkit-image-stack').each(function () {
 			var $stack = $(this);
-			if ($stack.data('rocketkit-stack-init')) {
+			if ($stack.data('orbitkit-stack-init')) {
 				return;
 			}
-			$stack.data('rocketkit-stack-init', true);
+			$stack.data('orbitkit-stack-init', true);
 		});
 	}
 
@@ -19,7 +19,7 @@
 		if (typeof elementorFrontend === 'undefined') {
 			return;
 		}
-		elementorFrontend.hooks.addAction('frontend/element_ready/rocketkit_image_stack.default', function ($scope) {
+		elementorFrontend.hooks.addAction('frontend/element_ready/orbitkit_image_stack.default', function ($scope) {
 			initStack($scope);
 		});
 	});

@@ -2,10 +2,10 @@
 /**
  * Plugin settings admin UI.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Includes;
+namespace OrbitKit\Elementor\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Top-level menu and Essential Addons–style settings page.
  */
-class RocketKit_Elementor_Settings {
+class OrbitKit_Elementor_Settings {
 
-	const OPTION_KEY            = 'rocketkit_elementor_active_widgets';
-	const INTEGRATIONS_OPTION_KEY = 'rocketkit_elementor_integrations';
-	const PAGE_SLUG               = 'rocketkit-elementor';
+	const OPTION_KEY            = 'orbitkit_elementor_active_widgets';
+	const INTEGRATIONS_OPTION_KEY = 'orbitkit_elementor_integrations';
+	const PAGE_SLUG               = 'orbitkit-elementor';
 
 	/**
 	 * Register hooks.
@@ -28,7 +28,7 @@ class RocketKit_Elementor_Settings {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		add_filter(
-			'plugin_action_links_' . plugin_basename( ROCKETKIT_ELEMENTOR_PATH . 'rocketkit-elementor-addon.php' ),
+			'plugin_action_links_' . plugin_basename( ORBITKIT_ELEMENTOR_PATH . 'orbitkit-elementor-addon.php' ),
 			array( $this, 'plugin_action_links' )
 		);
 	}
@@ -39,7 +39,7 @@ class RocketKit_Elementor_Settings {
 	 */
 	public function plugin_action_links( $links ) {
 		$links[] = '<a href="' . esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG ) ) . '">'
-			. esc_html__( 'Settings', 'rocketkit-addons-for-elementor' ) . '</a>';
+			. esc_html__( 'Settings', 'orbitkit-addons-for-elementor' ) . '</a>';
 		return $links;
 	}
 
@@ -48,8 +48,8 @@ class RocketKit_Elementor_Settings {
 	 */
 	public function add_menu_page() {
 		add_menu_page(
-			__( 'RocketKit Addons For Elementor', 'rocketkit-addons-for-elementor' ),
-			__( 'RocketKit Addons', 'rocketkit-addons-for-elementor' ),
+			__( 'OrbitKit Addons For Elementor', 'orbitkit-addons-for-elementor' ),
+			__( 'OrbitKit Addons', 'orbitkit-addons-for-elementor' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( $this, 'render_settings_page' ),
@@ -63,7 +63,7 @@ class RocketKit_Elementor_Settings {
 	 */
 	public function register_settings() {
 		register_setting(
-			'rocketkit_elementor_settings_group',
+			'orbitkit_elementor_settings_group',
 			self::OPTION_KEY,
 			array(
 				'type'              => 'array',
@@ -74,7 +74,7 @@ class RocketKit_Elementor_Settings {
 		);
 
 		register_setting(
-			'rocketkit_elementor_settings_group',
+			'orbitkit_elementor_settings_group',
 			self::INTEGRATIONS_OPTION_KEY,
 			array(
 				'type'              => 'array',
@@ -139,25 +139,25 @@ class RocketKit_Elementor_Settings {
 		}
 
 		wp_enqueue_style(
-			'rocketkit-admin-settings',
-			ROCKETKIT_ELEMENTOR_URL . 'assets/css/admin-settings.css',
+			'orbitkit-admin-settings',
+			ORBITKIT_ELEMENTOR_URL . 'assets/css/admin-settings.css',
 			array(),
-			ROCKETKIT_ELEMENTOR_VERSION
+			ORBITKIT_ELEMENTOR_VERSION
 		);
 
 		wp_enqueue_script(
-			'rocketkit-admin-settings',
-			ROCKETKIT_ELEMENTOR_URL . 'assets/js/admin-settings.js',
+			'orbitkit-admin-settings',
+			ORBITKIT_ELEMENTOR_URL . 'assets/js/admin-settings.js',
 			array( 'jquery' ),
-			ROCKETKIT_ELEMENTOR_VERSION,
+			ORBITKIT_ELEMENTOR_VERSION,
 			true
 		);
 
 		wp_localize_script(
-			'rocketkit-admin-settings',
-			'rocketkitAdmin',
+			'orbitkit-admin-settings',
+			'orbitkitAdmin',
 			array(
-				'i18n' => RocketKit_Elementor_I18n::get_admin_script_strings(),
+				'i18n' => OrbitKit_Elementor_I18n::get_admin_script_strings(),
 			)
 		);
 	}
@@ -167,7 +167,7 @@ class RocketKit_Elementor_Settings {
 	 */
 	public static function get_default_widgets() {
 		$defaults = array();
-		foreach ( array_keys( RocketKit_Widget_Registry::get_widgets() ) as $slug ) {
+		foreach ( array_keys( OrbitKit_Widget_Registry::get_widgets() ) as $slug ) {
 			$defaults[ $slug ] = 1;
 		}
 		return $defaults;
@@ -179,7 +179,7 @@ class RocketKit_Elementor_Settings {
 	 */
 	public function sanitize_widgets( $input ) {
 		$sanitized = array();
-		foreach ( RocketKit_Widget_Registry::get_widgets() as $slug => $config ) {
+		foreach ( OrbitKit_Widget_Registry::get_widgets() as $slug => $config ) {
 			$val = is_array( $input ) && isset( $input[ $slug ] ) ? $input[ $slug ] : 0;
 			$sanitized[ $slug ] = ( '1' === (string) $val || 1 === $val ) ? 1 : 0;
 		}
@@ -214,34 +214,34 @@ class RocketKit_Elementor_Settings {
 			return;
 		}
 
-		$rocketkit_widgets = RocketKit_Widget_Registry::get_widgets();
-		$rocketkit_active  = self::get_active_widgets();
-		$rocketkit_grouped = array(
+		$orbitkit_widgets = OrbitKit_Widget_Registry::get_widgets();
+		$orbitkit_active  = self::get_active_widgets();
+		$orbitkit_grouped = array(
 			'content' => array(),
 			'media'   => array(),
 		);
 
-		foreach ( $rocketkit_widgets as $rocketkit_slug => $rocketkit_widget ) {
-			$rocketkit_cat = isset( $rocketkit_widget['category'] ) ? $rocketkit_widget['category'] : 'content';
-			if ( ! isset( $rocketkit_grouped[ $rocketkit_cat ] ) ) {
-				$rocketkit_grouped[ $rocketkit_cat ] = array();
+		foreach ( $orbitkit_widgets as $orbitkit_slug => $orbitkit_widget ) {
+			$orbitkit_cat = isset( $orbitkit_widget['category'] ) ? $orbitkit_widget['category'] : 'content';
+			if ( ! isset( $orbitkit_grouped[ $orbitkit_cat ] ) ) {
+				$orbitkit_grouped[ $orbitkit_cat ] = array();
 			}
-			$rocketkit_grouped[ $rocketkit_cat ][ $rocketkit_slug ] = $rocketkit_widget;
+			$orbitkit_grouped[ $orbitkit_cat ][ $orbitkit_slug ] = $orbitkit_widget;
 		}
 
-		require_once ROCKETKIT_ELEMENTOR_PATH . 'admin/views/settings-page.php';
+		require_once ORBITKIT_ELEMENTOR_PATH . 'admin/views/settings-page.php';
 
-		rocketkit_elementor_render_settings_page_view(
+		orbitkit_elementor_render_settings_page_view(
 			array(
-				'widgets'          => $rocketkit_widgets,
-				'active'           => $rocketkit_active,
-				'categories'       => RocketKit_Widget_Registry::get_categories(),
+				'widgets'          => $orbitkit_widgets,
+				'active'           => $orbitkit_active,
+				'categories'       => OrbitKit_Widget_Registry::get_categories(),
 				'integrations'     => self::get_integrations(),
 				'option_key'       => self::OPTION_KEY,
 				'integrations_key' => self::INTEGRATIONS_OPTION_KEY,
-				'grouped'          => $rocketkit_grouped,
-				'total_widgets'    => count( $rocketkit_widgets ),
-				'enabled_count'    => count( array_filter( $rocketkit_active ) ),
+				'grouped'          => $orbitkit_grouped,
+				'total_widgets'    => count( $orbitkit_widgets ),
+				'enabled_count'    => count( array_filter( $orbitkit_active ) ),
 				'has_maps_key'     => '' !== self::get_google_maps_api_key(),
 			)
 		);

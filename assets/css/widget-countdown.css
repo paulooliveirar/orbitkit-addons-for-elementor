@@ -1,11 +1,11 @@
-.rocketkit-countdown-grid {
+.orbitkit-countdown-grid {
 	display: flex;
 	gap: 1rem;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
-.rocketkit-countdown-unit {
+.orbitkit-countdown-unit {
 	min-width: 72px;
 	padding: 1rem;
 	background: #111827;
@@ -14,21 +14,21 @@
 	text-align: center;
 }
 
-.rocketkit-countdown-value {
+.orbitkit-countdown-value {
 	display: block;
 	font-size: 2rem;
 	font-weight: 700;
 	line-height: 1.1;
 }
 
-.rocketkit-countdown-label {
+.orbitkit-countdown-label {
 	font-size: 0.75rem;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	opacity: 0.85;
 }
 
-.rocketkit-countdown-expired {
+.orbitkit-countdown-expired {
 	text-align: center;
 	font-size: 1.25rem;
 	font-weight: 600;

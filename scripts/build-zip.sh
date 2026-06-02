@@ -4,7 +4,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VERSION="$(tr -d '[:space:]' < "${ROOT}/VERSION")"
-SLUG="rocketkit-addons-for-elementor"
+SLUG="orbitkit-addons-for-elementor"
 DISTIGNORE="${ROOT}/.distignore"
 BUILD_DIR="${ROOT}/build"
 STAGE_DIR="${BUILD_DIR}/${SLUG}"

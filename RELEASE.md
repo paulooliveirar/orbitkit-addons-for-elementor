@@ -1,6 +1,6 @@
 # Releases
 
-Versioning uses a single source of truth in [`VERSION`](VERSION). Scripts sync that value to the plugin header, `ROCKETKIT_ELEMENTOR_VERSION`, `readme.txt` **Stable tag**, and translation catalogs.
+Versioning uses a single source of truth in [`VERSION`](VERSION). Scripts sync that value to the plugin header, `ORBITKIT_ELEMENTOR_VERSION`, `readme.txt` **Stable tag**, and translation catalogs.
 
 Git tags follow **`vX.Y.Z`** (for example `v1.4.0`).
 
@@ -47,7 +47,7 @@ git push origin v1.4.0
 
 ```bash
 ./scripts/build-zip.sh
-# Output: build/rocketkit-addons-for-elementor-X.Y.Z.zip
+# Output: build/orbitkit-addons-for-elementor-X.Y.Z.zip
 ```
 
 ## CI

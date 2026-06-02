@@ -2,16 +2,16 @@
 /**
  * Hook loader.
  *
- * @package RocketKit\Elementor
+ * @package OrbitKit\Elementor
  */
 
-namespace RocketKit\Elementor\Includes;
+namespace OrbitKit\Elementor\Includes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class RocketKit_Elementor_Loader {
+class OrbitKit_Elementor_Loader {
 
 	/** @var array<int, array<string, mixed>> */
 	protected $actions = array();
